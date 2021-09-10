@@ -7,16 +7,16 @@ site: distill::distill_website
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-
-# Learn more about creating websites with Distill at:
-# https://rstudio.github.io/distill/website.html
-
 ```
 
 ![](jiashuliu.jpeg){width=200}
 
 ## About me
 
+Hello! I'm currently a senior student double-major in Economics and Applied Math & Statistics at Macalester College, and will graduate in Spring 2022. I enjoy learning data visualization and R programming language. I'm also interested in the application of machine learning to economics, especially towards international trade topics. 
+
 ## Education
 
+BA in Economics and Applied Math & Statistics, 2022
 
+Macalester College
