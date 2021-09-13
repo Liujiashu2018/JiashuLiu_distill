@@ -1,1 +1,19 @@
-[]
+[
+  {
+    "path": "posts/2021-09-13-tidytuesday1/",
+    "title": "Tidy_Tuesday1",
+    "description": "A short description of the post.",
+    "author": [
+      {
+        "name": "Jiashu Liu",
+        "url": {}
+      }
+    ],
+    "date": "2021-09-13",
+    "categories": [],
+    "contents": "\n\n\nknitr::opts_chunk$set(echo = TRUE)\n\n\n\n\n\ntuesdata <- tidytuesdayR::tt_load('2021-08-31')\n\n\n\n    Downloading file 1 of 1: `bird_baths.csv`\n\ntuesdata <- tidytuesdayR::tt_load(2021, week = 36)\n\n\n\n    Downloading file 1 of 1: `bird_baths.csv`\n\nbird_baths <- tuesdata$bird_baths\n\n\n\n\n\nlibrary(tidyverse)    \nlibrary(lubridate)\nlibrary(ggthemes)    \n\n\n\n\n\nglimpse(bird_baths)\n\n\nRows: 161,057\nColumns: 5\n$ survey_year <dbl> 2014, 2014, 2014, 2014, 2014, 2014, 2014, 2014, …\n$ urban_rural <chr> \"Urban\", \"Urban\", \"Urban\", \"Urban\", \"Urban\", \"Ur…\n$ bioregions  <chr> \"South Eastern Queensland\", \"South Eastern Queen…\n$ bird_type   <chr> \"Bassian Thrush\", \"Chestnut-breasted Mannikin\", …\n$ bird_count  <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n\nIn this Tidy Tuesday homework, I explored the bird_bath data. The graph below is a grouped bar graph, presenting the number of birds in the rural and urban area of each bioregion in Austrilia respectively. The bird_count should be a binary factor indicating whether a given species was present or absent at a bird bath. However, I calculated the number of occurance of birds at bath by cumulating the bird_count and grouping the data by bioregions and rural_urban area. it is well noticed that in Sydney Basin, bird baths present more in the urban area rather than rural area. There are also a lot NA in this dataset, which I think is attributed to the difficulty of collecting the data.\n\n\nbird_baths%>%\n  group_by(bioregions, urban_rural)%>%\n  summarise(cumulative_bird_count=sum(bird_count))%>%\n  ggplot(aes(y=bioregions, x=cumulative_bird_count, fill=urban_rural))+\n  geom_bar(position=\"dodge\", stat=\"identity\")+\n  labs(y=\"Bioregions\", x=\"Occurance of birds at bath\", title = \"Number of birds in the rural and urban area of each bioregion\")+\n  theme_light()\n\n\n\n\n\n\n\n",
+    "preview": "posts/2021-09-13-tidytuesday1/tidytuesday1_files/figure-html5/unnamed-chunk-4-1.png",
+    "last_modified": "2021-09-13T11:04:59-05:00",
+    "input_file": {}
+  }
+]

@@ -1,0 +1,45 @@
+---
+title: "Tidy_Tuesday1"
+description: |
+  A short description of the post.
+author:
+  - name: Jiashu Liu
+date: 09-13-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+tuesdata <- tidytuesdayR::tt_load('2021-08-31')
+tuesdata <- tidytuesdayR::tt_load(2021, week = 36)
+
+bird_baths <- tuesdata$bird_baths
+```
+
+```{r}
+library(tidyverse)    
+library(lubridate)
+library(ggthemes)    
+```
+
+```{r}
+glimpse(bird_baths)
+```
+In this Tidy Tuesday homework, I explored the bird_bath data. The graph below is a grouped bar graph, presenting the number of birds in the rural and urban area of each bioregion in Austrilia respectively. The bird_count should be a binary factor indicating  whether a given species was present or absent at a bird bath. However, I calculated the number of occurance of birds at bath by cumulating the bird_count and grouping the data by bioregions and rural_urban area. it is well noticed that in Sydney Basin, bird baths present more in the urban area rather than rural area. There are also a lot NA in this dataset, which I think is attributed to the difficulty of collecting the data. 
+
+```{r}
+bird_baths%>%
+  group_by(bioregions, urban_rural)%>%
+  summarise(cumulative_bird_count=sum(bird_count))%>%
+  ggplot(aes(y=bioregions, x=cumulative_bird_count, fill=urban_rural))+
+  geom_bar(position="dodge", stat="identity")+
+  labs(y="Bioregions", x="Occurance of birds at bath", title = "Number of birds in the rural and urban area of each bioregion")+
+  theme_light()
+```
+
+

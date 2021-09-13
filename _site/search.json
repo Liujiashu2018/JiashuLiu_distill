@@ -6,14 +6,14 @@
       "description": "Some additional details about the website",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2021-09-09T19:54:17-05:00"
+      "last_modified": "2021-09-13T11:06:07-05:00"
     },
     {
       "path": "blog.html",
       "title": "Blog",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2021-09-09T19:54:18-05:00"
+      "last_modified": "2021-09-13T11:06:08-05:00"
     },
     {
       "path": "index.html",
@@ -21,7 +21,7 @@
       "description": "Welcome to the website. I hope you enjoy it!\n",
       "author": [],
       "contents": "\n\nAbout me\nHello! I’m currently a senior student double-major in Economics and Applied Math & Statistics at Macalester College, and will graduate in Spring 2022. I enjoy learning data visualization and R programming language. I’m also interested in the application of machine learning to economics, especially towards international trade topics.\nEducation\nBA in Economics and Applied Math & Statistics, 2022\nMacalester College\n\n\n\n",
-      "last_modified": "2021-09-09T19:54:19-05:00"
+      "last_modified": "2021-09-13T11:06:08-05:00"
     }
   ],
   "collections": ["posts/posts.json"]
