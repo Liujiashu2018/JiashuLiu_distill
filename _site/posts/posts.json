@@ -1,5 +1,22 @@
 [
   {
+    "path": "posts/2021-09-21-tidytuesday2/",
+    "title": "Tidytuesday2",
+    "description": "A short description of the post.",
+    "author": [
+      {
+        "name": "Jiashu Liu",
+        "url": {}
+      }
+    ],
+    "date": "2021-09-21",
+    "categories": [],
+    "contents": "\n\n\nknitr::opts_chunk$set(echo = TRUE)\n\n\n\n\n\nnominees <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-21/nominees.csv')\n\n\n\n\n\nlibrary(tidyverse)    \nlibrary(lubridate)\nlibrary(ggthemes) \nlibrary(plotly)\nlibrary(dplyr)\n\n\n\nIn the following steps, to explore the most recent trend, I first filter out the 2021 data from the entire Emmy Awards and Nominess dataset. I group the data by producer and type because I want to see the number of total shows each producer produced, and the distribution of Winner and Nominees in each production company. The colomn graph below shows that the Marvel Studio produced the most shows in 2021. However, most of the Marvel studio’s shows are nominees instead of winners. Shows produced by Netflix win the most Emmy Awards.\n\n\nnominees2021<-nominees %>% \n  filter(year==2021) %>% \n  group_by(producer,type) %>% \n  summarise(producer_count=n())\n\nnominees2021 %>% \n  ggplot(aes(x=producer_count, y=fct_reorder(producer, producer_count, sum),fill=type, )) +\n  geom_col()+\n  labs(x=\"Total number of shows produced by each producer\", y= \"Producer\")+\n  theme(axis.text.y = element_text(size = 4))\n\n\n\n\n\n\n\n",
+    "preview": "posts/2021-09-21-tidytuesday2/tidytuesday2_files/figure-html5/unnamed-chunk-4-1.png",
+    "last_modified": "2021-09-21T18:53:45-05:00",
+    "input_file": "tidytuesday2.knit.md"
+  },
+  {
     "path": "posts/2021-09-13-tidytuesday1/",
     "title": "Tidy_Tuesday1",
     "description": "A short description of the post.",
