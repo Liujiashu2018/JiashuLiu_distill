@@ -1,0 +1,56 @@
+---
+title: "Tidytuesday3"
+description: |
+  A short description of the post.
+author:
+  - name: Jiashu Liu
+date: 10-05-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# Get the Data
+papers <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/papers.csv')
+authors <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/authors.csv')
+programs <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/programs.csv')
+paper_authors <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/paper_authors.csv')
+paper_programs <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/paper_programs.csv')
+```
+
+```{r}
+library(tidyverse)    
+library(lubridate)
+library(ggthemes)  
+```
+In this Tidy Tuesday homework, I explored the NBER Papers dataset. The question I proposed is how the number of different programs change over years. To gain a full picture of the data set, I first joint the datasets by using the left_join() function. Then I created a line graph to visualize the change in the number of different programs over years. The graph shows that program of Microeconomics has the most papers over years. However, the number dropped sharply in 2020, not only for the program of Microeconomics, but also for the programs of Finance and Macro/International economics. I guess one of the reasons for the decline is related to the pandemic. Apparently more research could be done on this. 
+
+```{r}
+program<-paper_programs %>% left_join(programs,by="program")
+```
+
+```{r}
+paper<-program %>% left_join(paper_authors, by="paper")
+```
+
+```{r}
+NBER_data<-paper %>% left_join(papers, by="paper")
+NBER_data
+```
+```{r}
+NBER<-NBER_data %>% 
+  group_by(program_category, year) %>% 
+  summarise(program_category_count=n()) 
+```
+```{r}
+NBER %>% 
+  ggplot(aes(x=year, y=program_category_count, color=program_category))+
+  geom_line()+
+  labs(x="Year", y="Number of papers in each category")
+  theme_minimal()
+```
