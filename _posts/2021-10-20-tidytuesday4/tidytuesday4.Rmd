@@ -1,0 +1,59 @@
+---
+title: "tidytuesday4"
+description: |
+  A short description of the post.
+author:
+  - name: Jiashu Liu
+    url: {}
+date: 10-20-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+It's close to Halloween, so I'm interested in the pumpkins in Lisa's garden.I'm curious about how heavy different varieties of pumpkins are. So I first filtered the data to extract "pumpkins" out.
+I grouped the data by variety and then calculated the mean weight of the pumpkins.The following graph has the weight and average weight of the three types of pumpkins. 
+
+```{r}
+library(tidyverse)    
+library(lubridate)
+library(ggthemes) 
+library(plotly)
+library(dplyr)
+library(googlesheets4)
+gs4_deauth() 
+```
+
+```{r}
+harvest_2021 <- read_sheet("https://docs.google.com/spreadsheets/d/1DU6dpxrbPGW2oJHQ6TG_xibazoGhvmRcqk2iPGOaRUI/edit?usp=sharing") %>%
+mutate(date = ymd(date))
+```
+
+```{r}
+garden_harvest_average<-
+  harvest_2021%>%
+  filter(vegetable=="pumpkin")%>%
+  mutate(variety=str_to_title(variety))%>%
+  group_by(variety)%>%
+  summarise(mean = mean(weight))
+
+garden_harvest<-
+ harvest_2021%>%
+  filter(vegetable=="pumpkin") 
+
+my_plot<-
+  ggplot()+
+  geom_jitter(garden_harvest, mapping = aes(y=variety, x=weight,color=variety))+
+  geom_jitter(garden_harvest_average, mapping = aes(y=variety, x=mean, fill="black"))+
+  labs(x="", y="",
+      title="Weight of Different Variety of Pumpkin",
+      caption = "Data by Jiashu Liu")+
+  theme_light()+
+  theme(panel.grid = element_blank())
+my_plot
+```
