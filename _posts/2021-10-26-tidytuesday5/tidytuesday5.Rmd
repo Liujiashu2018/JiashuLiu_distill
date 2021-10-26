@@ -13,8 +13,10 @@ output:
 
 
 ```{r setup}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
 ```
+
+In this Tidytuesday homework, I explored the Ultra Trail Running dataset. What I did first was to combine the two data set - race and ultra_ranking- together. Then I filtered out the data for France, China and United Kingdom.Finally, I created a table which gives me a direct sense of runners' gender and age distribution in the three selected countries. The results shows that there are more male runners than female runners in all three countries, and most runners have age under 30.  
 
 ```{r}
 library(tidyverse)    

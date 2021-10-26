@@ -116,7 +116,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"NULL"}
+  {"type":"character","attributes":{},"value":["tidytuesday5_files/anchor-4.2.2/anchor.min.js","tidytuesday5_files/bowser-1.9.3/bowser.min.js","tidytuesday5_files/distill-2.2.21/template.v2.js","tidytuesday5_files/jquery-1.11.3/jquery.min.js","tidytuesday5_files/popper-2.6.0/popper.min.js","tidytuesday5_files/tippy-6.2.7/tippy-bundle.umd.min.js","tidytuesday5_files/tippy-6.2.7/tippy-light-border.css","tidytuesday5_files/tippy-6.2.7/tippy.css","tidytuesday5_files/tippy-6.2.7/tippy.umd.min.js","tidytuesday5_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1479,17 +1479,36 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="d-article">
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>knitr</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/knitr/man/opts_chunk.html'>opts_chunk</a></span><span class='op'>$</span><span class='fu'>set</span><span class='op'>(</span>echo <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>knitr</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/knitr/man/opts_chunk.html'>opts_chunk</a></span><span class='op'>$</span><span class='fu'>set</span><span class='op'>(</span>echo <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>In this Tidytuesday homework, I explored the Ultra Trail Running dataset. What I did first was to combine the two data set - race and ultra_ranking- together. Then I filtered out the data for France, China and United Kingdom.Finally, I created a table which gives me a direct sense of runners’ gender and age distribution in the three selected countries. The results shows that there are more male runners than female runners in all three countries, and most runners have age under 30.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>    
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://lubridate.tidyverse.org'>lubridate</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://github.com/jrnold/ggthemes'>ggthemes</a></span><span class='op'>)</span> 
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://plotly-r.com'>plotly</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/rstudio/gt'>gt</a></span><span class='op'>)</span> 
 </code></pre>
 </div>
 </div>
 <div class="layout-chunk" data-layout="l-body">
-
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>ultra_rankings</span> <span class='op'>&lt;-</span> <span class='fu'>readr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/readr/man/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-26/ultra_rankings.csv'</span><span class='op'>)</span>
+<span class='va'>race</span> <span class='op'>&lt;-</span> <span class='fu'>readr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/readr/man/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-26/race.csv'</span><span class='op'>)</span>
+</code></pre>
+</div>
 </div>
 <div class="layout-chunk" data-layout="l-body">
-
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>Ultra_Trail_Running</span> <span class='op'>&lt;-</span> <span class='va'>race</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/mutate-joins.html'>left_join</a></span><span class='op'>(</span><span class='va'>ultra_rankings</span>, by<span class='op'>=</span><span class='st'>"race_year_id"</span><span class='op'>)</span>
+<span class='va'>Ultra_Trail_Running</span>
+</code></pre>
 </div>
-<div class="layout-chunk" data-layout="l-body">
 <pre><code># A tibble: 137,803 × 20
    race_year_id event     race    city  country  date       start_time
           &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;    &lt;date&gt;     &lt;time&gt;    
@@ -1510,6 +1529,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 #   nationality &lt;chr&gt;, time_in_seconds &lt;dbl&gt;</code></pre>
 </div>
 <div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>age_30_France_China_UK</span><span class='op'>&lt;-</span><span class='va'>Ultra_Trail_Running</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>country</span> <span class='op'>==</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"France"</span>, <span class='st'>"China"</span>, <span class='st'>"United Kingdom"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/mutate.html'>mutate</a></span><span class='op'>(</span>age_30 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>age</span> <span class='op'>&lt;</span> <span class='fl'>30</span>, <span class='fl'>1</span>, <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>age_30</span>, <span class='va'>gender</span>, <span class='va'>country</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/count.html'>count</a></span><span class='op'>(</span><span class='va'>age_30</span><span class='op'>)</span>
+<span class='va'>age_30_France_China_UK</span>
+</code></pre>
+</div>
 <pre><code># A tibble: 14 × 4
 # Groups:   age_30, gender, country [14]
    age_30 gender country            n
@@ -1530,11 +1558,21 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 14      1 W      United Kingdom    40</code></pre>
 </div>
 <div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>age_30_France_China_UK</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/pkg/gt/man/gt.html'>gt</a></span><span class='op'>(</span>rowname_col <span class='op'>=</span> <span class='st'>"age_30"</span>,
+     groupname_col<span class='op'>=</span><span class='st'>"country"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/pkg/gt/man/tab_header.html'>tab_header</a></span><span class='op'>(</span>
+    title <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/gt/man/md.html'>md</a></span><span class='op'>(</span><span class='st'>"**Distribution of gender and age in three countries' races**"</span><span class='op'>)</span>,
+    subtitle <span class='op'>=</span> <span class='st'>"0 stands for age less than 30"</span>
+    <span class='op'>)</span>
+</code></pre>
+</div>
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#zrrjtwtpal .gt_table {
+#bmjzydnyyy .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1559,7 +1597,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-left-color: #D3D3D3;
 }
 
-#zrrjtwtpal .gt_heading {
+#bmjzydnyyy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1571,7 +1609,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#zrrjtwtpal .gt_title {
+#bmjzydnyyy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1581,7 +1619,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-bottom-width: 0;
 }
 
-#zrrjtwtpal .gt_subtitle {
+#bmjzydnyyy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1591,13 +1629,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-top-width: 0;
 }
 
-#zrrjtwtpal .gt_bottom_border {
+#bmjzydnyyy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zrrjtwtpal .gt_col_headings {
+#bmjzydnyyy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1612,7 +1650,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#zrrjtwtpal .gt_col_heading {
+#bmjzydnyyy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1632,7 +1670,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   overflow-x: hidden;
 }
 
-#zrrjtwtpal .gt_column_spanner_outer {
+#bmjzydnyyy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1644,15 +1682,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-right: 4px;
 }
 
-#zrrjtwtpal .gt_column_spanner_outer:first-child {
+#bmjzydnyyy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zrrjtwtpal .gt_column_spanner_outer:last-child {
+#bmjzydnyyy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zrrjtwtpal .gt_column_spanner {
+#bmjzydnyyy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1664,7 +1702,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   width: 100%;
 }
 
-#zrrjtwtpal .gt_group_heading {
+#bmjzydnyyy .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1686,7 +1724,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   vertical-align: middle;
 }
 
-#zrrjtwtpal .gt_empty_group_heading {
+#bmjzydnyyy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1701,15 +1739,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   vertical-align: middle;
 }
 
-#zrrjtwtpal .gt_from_md > :first-child {
+#bmjzydnyyy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zrrjtwtpal .gt_from_md > :last-child {
+#bmjzydnyyy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zrrjtwtpal .gt_row {
+#bmjzydnyyy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1728,7 +1766,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   overflow-x: hidden;
 }
 
-#zrrjtwtpal .gt_stub {
+#bmjzydnyyy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1740,7 +1778,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-left: 12px;
 }
 
-#zrrjtwtpal .gt_summary_row {
+#bmjzydnyyy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1750,7 +1788,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-right: 5px;
 }
 
-#zrrjtwtpal .gt_first_summary_row {
+#bmjzydnyyy .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1760,7 +1798,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-top-color: #D3D3D3;
 }
 
-#zrrjtwtpal .gt_grand_summary_row {
+#bmjzydnyyy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1770,7 +1808,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-right: 5px;
 }
 
-#zrrjtwtpal .gt_first_grand_summary_row {
+#bmjzydnyyy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1780,11 +1818,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-top-color: #D3D3D3;
 }
 
-#zrrjtwtpal .gt_striped {
+#bmjzydnyyy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zrrjtwtpal .gt_table_body {
+#bmjzydnyyy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1793,7 +1831,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-bottom-color: #D3D3D3;
 }
 
-#zrrjtwtpal .gt_footnotes {
+#bmjzydnyyy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1807,13 +1845,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#zrrjtwtpal .gt_footnote {
+#bmjzydnyyy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#zrrjtwtpal .gt_sourcenotes {
+#bmjzydnyyy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1827,46 +1865,46 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#zrrjtwtpal .gt_sourcenote {
+#bmjzydnyyy .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#zrrjtwtpal .gt_left {
+#bmjzydnyyy .gt_left {
   text-align: left;
 }
 
-#zrrjtwtpal .gt_center {
+#bmjzydnyyy .gt_center {
   text-align: center;
 }
 
-#zrrjtwtpal .gt_right {
+#bmjzydnyyy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zrrjtwtpal .gt_font_normal {
+#bmjzydnyyy .gt_font_normal {
   font-weight: normal;
 }
 
-#zrrjtwtpal .gt_font_bold {
+#bmjzydnyyy .gt_font_bold {
   font-weight: bold;
 }
 
-#zrrjtwtpal .gt_font_italic {
+#bmjzydnyyy .gt_font_italic {
   font-style: italic;
 }
 
-#zrrjtwtpal .gt_super {
+#bmjzydnyyy .gt_super {
   font-size: 65%;
 }
 
-#zrrjtwtpal .gt_footnote_marks {
+#bmjzydnyyy .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 </style>
-<div id="zrrjtwtpal" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<div id="bmjzydnyyy" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
   <thead class="gt_header">
     <tr>
       <th colspan="3" class="gt_heading gt_title gt_font_normal" style><strong>Distribution of gender and age in three countries' races</strong></th>
