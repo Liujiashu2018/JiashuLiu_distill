@@ -12,12 +12,41 @@ output:
 ---
 
 
-```{r setup, include=FALSE}
+```{r setup}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-Distill is a publication format for scientific and technical writing, native to the web.
-
-Learn more about using Distill at <https://rstudio.github.io/distill>.
-
-
+```{r}
+library(tidyverse)    
+library(lubridate)
+library(ggthemes) 
+library(plotly)
+library(dplyr)
+library(gt) 
+```
+```{r}
+ultra_rankings <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-26/ultra_rankings.csv')
+race <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-26/race.csv')
+```
+```{r}
+Ultra_Trail_Running <- race %>% 
+  left_join(ultra_rankings, by="race_year_id")
+Ultra_Trail_Running
+```
+```{r}
+age_30_France_China_UK<-Ultra_Trail_Running %>% 
+  filter(country == c("France", "China", "United Kingdom")) %>% 
+  mutate(age_30 = if_else(age < 30, 1, 0)) %>% 
+  group_by(age_30, gender, country) %>% 
+  count(age_30)
+age_30_France_China_UK
+```
+```{r}
+age_30_France_China_UK %>% 
+  gt(rowname_col = "age_30",
+     groupname_col="country") %>% 
+  tab_header(
+    title = md("**Distribution of gender and age in three countries' races**"),
+    subtitle = "0 stands for age less than 30"
+    )
+```
