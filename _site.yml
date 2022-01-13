@@ -9,6 +9,8 @@ navbar:
       href: index.html
     - text: "Blog"
       href:  blog.html
+    - text: "Projects"
+      href:  projcts.html
     - icon: fa fa-github 
       href: https://github.com/Liujiashu2018
     - icon: fa fa-linkedin 
