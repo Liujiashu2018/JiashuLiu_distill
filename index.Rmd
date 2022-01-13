@@ -1,22 +1,41 @@
 ---
 title: "Jiashu Liu"
+image: "jiashuliu.jpeg"
+preview: "jiashuliu.jpeg"
+links:
+  - label: LinkedIn
+    url: "https://www.linkedin.com/in/jiashu-liu-825487199/"
+  - label: GitHub
+    url: "https://github.com/Liujiashu2018"
+  - label: Email
+    url: "mailto:jliu2@macalester.edu"
+output:
+  postcards::trestles
 description: |
   Welcome to the website. I hope you enjoy it!
 site: distill::distill_website
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-```
-
-![](jiashuliu.jpeg){width=200}
 
 ## About me
 
-Hello! I'm currently a senior student double-major in Economics and Applied Math & Statistics at Macalester College, and will graduate in Spring 2022. I enjoy learning data visualization and R programming language. I'm also interested in the application of machine learning to economics, especially towards international trade topics. 
+Welcome to my personal website! I'm a senior student of Economics and Applied Math & Statistics at Macalester College, and will graduate in May 2022. I enjoy programming with R for data analytics, data visualization, and creating Shiny apps. 
 
 ## Education
 
-BA in Economics and Applied Math & Statistics, 2022
+**Macalester College** | St Paul, MN
 
-Macalester College
+BA in Economics and Applied Math & Statistics, Sept. 2018 ~ Present
+
+## Internship
+
+**China Securities**| Summer M&A Intern, July 2021 ~ August 2021
+
+**Huatai Securities** | Mutual Fund Intern, May 2021 ~ June 2021
+
+**Prepare+Prosper** | Virtual Financial Advocate, January 2021 ~ May 2021
+
+**Macalester College** | Student Fundraiser, January 2020 ~ June 2020
+
+
+
