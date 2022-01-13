@@ -6,22 +6,22 @@
       "description": "Some additional details about the website",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2021-10-20T20:06:08-05:00"
+      "last_modified": "2022-01-12T20:50:29-06:00"
     },
     {
       "path": "blog.html",
       "title": "Blog",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2021-10-20T20:06:09-05:00"
+      "last_modified": "2022-01-12T20:50:29-06:00"
     },
     {
       "path": "index.html",
       "title": "Jiashu Liu",
       "description": "Welcome to the website. I hope you enjoy it!\n",
       "author": [],
-      "contents": "\n\nAbout me\nHello! I’m currently a senior student double-major in Economics and Applied Math & Statistics at Macalester College, and will graduate in Spring 2022. I enjoy learning data visualization and R programming language. I’m also interested in the application of machine learning to economics, especially towards international trade topics.\nEducation\nBA in Economics and Applied Math & Statistics, 2022\nMacalester College\n\n\n\n",
-      "last_modified": "2021-10-20T20:06:10-05:00"
+      "contents": "\n\n          \n      \n      Jiashu Liu\n      \n      \n      About\n      Blog\n      Projects\n      \n      \n      \n      \n      \n      \n      ☰\n      \n      \n      \n        \n          \n            \n              \n            \n              Jiashu Liu\n            \n            \n              \n                \n                    \n                      \n                        LinkedIn\n                      \n                    \n                  \n                                    \n                    \n                      \n                        GitHub\n                      \n                    \n                  \n                                    \n                    \n                      \n                        Email\n                      \n                    \n                  \n                                  \n            \n          \n        \n        \n        \n          \n            \n            About me\n            Welcome to my personal website! I’m a senior student of Economics and Applied Math & Statistics at Macalester College, and will graduate in May 2022. I enjoy programming with R for data analytics, data visualization, and creating Shiny apps.\n            \n            \n            Education\n            Macalester College | St Paul, MN\n            BA in Economics and Applied Math & Statistics, Sept. 2018 ~ Present\n            \n            \n            Internship\n            China Securities| Summer M&A Intern, July 2021 ~ August 2021\n            Huatai Securities | Mutual Fund Intern, May 2021 ~ June 2021\n            Prepare+Prosper | Virtual Financial Advocate, January 2021 ~ May 2021\n            Macalester College | Student Fundraiser, January 2020 ~ June 2020\n            \n          \n        \n      \n    \n\n    \n      \n        \n          \n            \n              \n            \n              Jiashu Liu\n            \n            \n              \n                \n                                    \n                    \n                      LinkedIn\n                    \n                  \n                                    \n                    \n                      GitHub\n                    \n                  \n                                    \n                    \n                      Email\n                    \n                  \n                                  \n              \n            \n            \n              \n              About me\n              Welcome to my personal website! I’m a senior student of Economics and Applied Math & Statistics at Macalester College, and will graduate in May 2022. I enjoy programming with R for data analytics, data visualization, and creating Shiny apps.\n              \n              \n              Education\n              Macalester College | St Paul, MN\n              BA in Economics and Applied Math & Statistics, Sept. 2018 ~ Present\n              \n              \n              Internship\n              China Securities| Summer M&A Intern, July 2021 ~ August 2021\n              Huatai Securities | Mutual Fund Intern, May 2021 ~ June 2021\n              Prepare+Prosper | Virtual Financial Advocate, January 2021 ~ May 2021\n              Macalester College | Student Fundraiser, January 2020 ~ June 2020\n              \n            \n        \n      \n    \n\n    \n    \n    ",
+      "last_modified": "2022-01-12T20:50:30-06:00"
     }
   ],
   "collections": ["posts/posts.json"]
