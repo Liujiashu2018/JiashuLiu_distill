@@ -1,0 +1,2877 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { color: #20794d; } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #20794d; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
+  <!--radix_placeholder_meta_tags-->
+  <title>Machine Learning</title>
+  
+  <meta property="description" itemprop="description" content="How do different aspects, such as the locations, room types and availability over a month, affect the price of the Airbnb? How to determine which neighborhood the Airbnb is in according to its price, property type, room type, and reviews per month etc.?"/>
+  
+  
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2022-01-14"/>
+  <meta property="article:created" itemprop="dateCreated" content="2022-01-14"/>
+  <meta name="article:author" content="Jiashu Liu"/>
+  
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="Machine Learning"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="How do different aspects, such as the locations, room types and availability over a month, affect the price of the Airbnb? How to determine which neighborhood the Airbnb is in according to its price, property type, room type, and reviews per month etc.?"/>
+  <meta property="og:locale" content="en_US"/>
+  
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="Machine Learning"/>
+  <meta property="twitter:description" content="How do different aspects, such as the locations, room types and availability over a month, affect the price of the Airbnb? How to determine which neighborhood the Airbnb is in according to its price, property type, room type, and reviews per month etc.?"/>
+  
+  <!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","preview"]}},"value":[{"type":"character","attributes":{},"value":["Machine Learning"]},{"type":"character","attributes":{},"value":["How do different aspects, such as the locations, room types and availability over a month, affect the price of the Airbnb? How to determine which neighborhood the Airbnb is in according to its price, property type, room type, and reviews per month etc.? \n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Jiashu Liu"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["01-14-2022"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["machine-learning-featured.jpeg"]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["machine-learning_files/anchor-4.2.2/anchor.min.js","machine-learning_files/bowser-1.9.3/bowser.min.js","machine-learning_files/distill-2.2.21/template.v2.js","machine-learning_files/figure-html5/unnamed-chunk-10-1.png","machine-learning_files/figure-html5/unnamed-chunk-11-1.png","machine-learning_files/figure-html5/unnamed-chunk-12-1.png","machine-learning_files/figure-html5/unnamed-chunk-13-1.png","machine-learning_files/figure-html5/unnamed-chunk-14-1.png","machine-learning_files/figure-html5/unnamed-chunk-15-1.png","machine-learning_files/figure-html5/unnamed-chunk-23-1.png","machine-learning_files/figure-html5/unnamed-chunk-24-1.png","machine-learning_files/figure-html5/unnamed-chunk-26-1.png","machine-learning_files/figure-html5/unnamed-chunk-26-2.png","machine-learning_files/figure-html5/unnamed-chunk-27-1.png","machine-learning_files/figure-html5/unnamed-chunk-27-2.png","machine-learning_files/figure-html5/unnamed-chunk-33-1.png","machine-learning_files/figure-html5/unnamed-chunk-34-1.png","machine-learning_files/figure-html5/unnamed-chunk-35-1.png","machine-learning_files/figure-html5/unnamed-chunk-36-1.png","machine-learning_files/figure-html5/unnamed-chunk-37-1.png","machine-learning_files/figure-html5/unnamed-chunk-38-1.png","machine-learning_files/figure-html5/unnamed-chunk-39-1.png","machine-learning_files/figure-html5/unnamed-chunk-40-1.png","machine-learning_files/figure-html5/unnamed-chunk-41-1.png","machine-learning_files/figure-html5/unnamed-chunk-42-1.png","machine-learning_files/figure-html5/unnamed-chunk-43-1.png","machine-learning_files/figure-html5/unnamed-chunk-44-1.png","machine-learning_files/figure-html5/unnamed-chunk-50-1.png","machine-learning_files/figure-html5/unnamed-chunk-51-1.png","machine-learning_files/figure-html5/unnamed-chunk-53-1.png","machine-learning_files/figure-html5/unnamed-chunk-54-1.png","machine-learning_files/figure-html5/unnamed-chunk-54-2.png","machine-learning_files/figure-html5/unnamed-chunk-54-3.png","machine-learning_files/figure-html5/unnamed-chunk-54-4.png","machine-learning_files/figure-html5/unnamed-chunk-54-5.png","machine-learning_files/figure-html5/unnamed-chunk-55-1.png","machine-learning_files/figure-html5/unnamed-chunk-55-2.png","machine-learning_files/figure-html5/unnamed-chunk-55-3.png","machine-learning_files/figure-html5/unnamed-chunk-55-4.png","machine-learning_files/figure-html5/unnamed-chunk-55-5.png","machine-learning_files/figure-html5/unnamed-chunk-9-1.png","machine-learning_files/jquery-1.11.3/jquery.min.js","machine-learning_files/popper-2.6.0/popper.min.js","machine-learning_files/tippy-6.2.7/tippy-bundle.umd.min.js","machine-learning_files/tippy-6.2.7/tippy-light-border.css","machine-learning_files/tippy-6.2.7/tippy.css","machine-learning_files/tippy-6.2.7/tippy.umd.min.js","machine-learning_files/webcomponents-2.0.0/webcomponents.js","machine-learning-featured.jpeg"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+  
+  <style type="text/css">
+  
+  body {
+    background-color: white;
+  }
+  
+  .pandoc-table {
+    width: 100%;
+  }
+  
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+  
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+  
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+  
+  d-byline .byline {
+    grid-template-columns: 2fr 2fr;
+  }
+  
+  d-byline .byline h3 {
+    margin-block-start: 1.5em;
+  }
+  
+  d-byline .byline .authors-affiliations h3 {
+    margin-block-start: 0.5em;
+  }
+  
+  .authors-affiliations .orcid-id {
+    width: 16px;
+    height:16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    vertical-align: middle;
+    padding-bottom: 2px;
+  }
+  
+  d-title .dt-tags {
+    margin-top: 1em;
+    grid-column: text;
+  }
+  
+  .dt-tags .dt-tag {
+    text-decoration: none;
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0em 0.4em;
+    margin-right: 0.5em;
+    margin-bottom: 0.4em;
+    font-size: 70%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  
+  d-article table.gt_table td,
+  d-article table.gt_table th {
+    border-bottom: none;
+  }
+  
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+  
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+  
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+  
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .shaded .shaded-content {
+    background: white;
+  }
+  
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+  
+  .hidden {
+    display: none !important;
+  }
+  
+  d-article {
+    padding-top: 2.5rem;
+    padding-bottom: 30px;
+  }
+  
+  d-appendix {
+    padding-top: 30px;
+  }
+  
+  d-article>p>img {
+    width: 100%;
+  }
+  
+  d-article h2 {
+    margin: 1rem 0 1.5rem 0;
+  }
+  
+  d-article h3 {
+    margin-top: 1.5rem;
+  }
+  
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+  
+  /* Tweak code blocks */
+  
+  d-article div.sourceCode code,
+  d-article pre code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+  
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: auto;
+  }
+  
+  d-article div.sourceCode {
+    background-color: white;
+  }
+  
+  d-article div.sourceCode pre {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+  
+  d-article pre {
+    font-size: 12px;
+    color: black;
+    background: none;
+    margin-top: 0;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+  
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+  
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+  
+  d-article pre a {
+    border-bottom: none;
+  }
+  
+  d-article pre a:hover {
+    border-bottom: none;
+    text-decoration: underline;
+  }
+  
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+  
+  @media(min-width: 768px) {
+  
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: visible !important;
+  }
+  
+  d-article div.sourceCode pre {
+    padding-left: 18px;
+    font-size: 14px;
+  }
+  
+  d-article pre {
+    font-size: 14px;
+  }
+  
+  }
+  
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+  
+  /* CSS for d-contents */
+  
+  .d-contents {
+    grid-column: text;
+    color: rgba(0,0,0,0.8);
+    font-size: 0.9em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 0.25em;
+    justify-self: start;
+  }
+  
+  @media(min-width: 1000px) {
+    .d-contents.d-contents-float {
+      height: 0;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      justify-self: center;
+      padding-right: 3em;
+      padding-left: 2em;
+    }
+  }
+  
+  .d-contents nav h3 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+  
+  .d-contents li {
+    list-style-type: none
+  }
+  
+  .d-contents nav > ul {
+    padding-left: 0;
+  }
+  
+  .d-contents ul {
+    padding-left: 1em
+  }
+  
+  .d-contents nav ul li {
+    margin-top: 0.6em;
+    margin-bottom: 0.2em;
+  }
+  
+  .d-contents nav a {
+    font-size: 13px;
+    border-bottom: none;
+    text-decoration: none
+    color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .d-contents nav a:hover {
+    text-decoration: underline solid rgba(0, 0, 0, 0.6)
+  }
+  
+  .d-contents nav > ul > li > a {
+    font-weight: 600;
+  }
+  
+  .d-contents nav > ul > li > ul {
+    font-weight: inherit;
+  }
+  
+  .d-contents nav > ul > li > ul > li {
+    margin-top: 0.2em;
+  }
+  
+  
+  .d-contents nav ul {
+    margin-top: 0;
+    margin-bottom: 0.25em;
+  }
+  
+  .d-article-with-toc h2:nth-child(2) {
+    margin-top: 0;
+  }
+  
+  
+  /* Figure */
+  
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+  
+  .figure img {
+    width: 100%;
+  }
+  
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+  
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+  
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+  
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+  
+  /* Citations */
+  
+  d-article .citation {
+    color: inherit;
+    cursor: inherit;
+  }
+  
+  div.hanging-indent{
+    margin-left: 1em; text-indent: -1em;
+  }
+  
+  /* Citation hover box */
+  
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+  
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
+  }
+  
+  
+  /* Tweak 1000px media break to show more text */
+  
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+  
+    .grid {
+      grid-column-gap: 16px;
+    }
+  
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+  
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+  
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+  
+  
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+  
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  
+  /* Include appendix styles here so they can be overridden */
+  
+  d-appendix {
+    contain: layout style;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-top: 60px;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0,0,0,0.5);
+    padding-top: 60px;
+    padding-bottom: 48px;
+  }
+  
+  d-appendix h3 {
+    grid-column: page-start / text-start;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.65);
+  }
+  
+  d-appendix h3 + * {
+    margin-top: 1em;
+  }
+  
+  d-appendix ol {
+    padding: 0 0 0 15px;
+  }
+  
+  @media (min-width: 768px) {
+    d-appendix ol {
+      padding: 0 0 0 30px;
+      margin-left: -30px;
+    }
+  }
+  
+  d-appendix li {
+    margin-bottom: 1em;
+  }
+  
+  d-appendix a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+  
+  d-appendix > * {
+    grid-column: text;
+  }
+  
+  d-appendix > d-footnote-list,
+  d-appendix > d-citation-list,
+  d-appendix > distill-appendix {
+    grid-column: screen;
+  }
+  
+  /* Include footnote styles here so they can be overridden */
+  
+  d-footnote-list {
+    contain: layout style;
+  }
+  
+  d-footnote-list > * {
+    grid-column: text;
+  }
+  
+  d-footnote-list a.footnote-backlink {
+    color: rgba(0,0,0,0.3);
+    padding-left: 0.5em;
+  }
+  
+  
+  
+  /* Anchor.js */
+  
+  .anchorjs-link {
+    /*transition: all .25s linear; */
+    text-decoration: none;
+    border-bottom: none;
+  }
+  *:hover > .anchorjs-link {
+    margin-left: -1.125em !important;
+    text-decoration: none;
+    border-bottom: none;
+  }
+  
+  /* Social footer */
+  
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+  
+  .disqus-comments {
+    margin-right: 30px;
+  }
+  
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+  
+  #disqus_thread {
+    margin-top: 30px;
+  }
+  
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+  
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+  
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+  
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+  
+  
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+  
+  
+  .sidebar-section.custom {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+  
+  .custom p {
+    margin-bottom: 0.5em;
+  }
+  
+  /* Styles for listing layout (hide title) */
+  .layout-listing d-title, .layout-listing .d-title {
+    display: none;
+  }
+  
+  /* Styles for posts lists (not auto-injected) */
+  
+  
+  .posts-with-sidebar {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+  
+  .posts-list .description h2,
+  .posts-list .description p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+  
+  .posts-list .description h2 {
+    font-weight: 700;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  
+  .posts-list h2.post-tag {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 12px;
+  }
+  .posts-list {
+    margin-top: 60px;
+    margin-bottom: 24px;
+  }
+  
+  .posts-list .post-preview {
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 24px 0;
+  }
+  
+  .post-preview-last {
+    border-bottom: none !important;
+  }
+  
+  .posts-list .posts-list-caption {
+    grid-column: screen;
+    font-weight: 400;
+  }
+  
+  .posts-list .post-preview h2 {
+    margin: 0 0 6px 0;
+    line-height: 1.2em;
+    font-style: normal;
+    font-size: 24px;
+  }
+  
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.4em;
+    font-size: 16px;
+  }
+  
+  .posts-list .post-preview .thumbnail {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    position: relative;
+    max-width: 500px;
+  }
+  .posts-list .post-preview img {
+    width: 100%;
+    display: block;
+  }
+  
+  .posts-list .metadata {
+    font-size: 12px;
+    line-height: 1.4em;
+    margin-bottom: 18px;
+  }
+  
+  .posts-list .metadata > * {
+    display: inline-block;
+  }
+  
+  .posts-list .metadata .publishedDate {
+    margin-right: 2em;
+  }
+  
+  .posts-list .metadata .dt-authors {
+    display: block;
+    margin-top: 0.3em;
+    margin-right: 2em;
+  }
+  
+  .posts-list .dt-tags {
+    display: block;
+    line-height: 1em;
+  }
+  
+  .posts-list .dt-tags .dt-tag {
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0.3em 0.4em;
+    margin-right: 0.2em;
+    margin-bottom: 0.4em;
+    font-size: 60%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  
+  .posts-list img {
+    opacity: 1;
+  }
+  
+  .posts-list img[data-src] {
+    opacity: 0;
+  }
+  
+  .posts-more {
+    clear: both;
+  }
+  
+  
+  .posts-sidebar {
+    font-size: 16px;
+  }
+  
+  .posts-sidebar h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+  
+  .sidebar-section {
+    margin-bottom: 30px;
+  }
+  
+  .categories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .categories li {
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 0;
+  }
+  
+  .categories li>a {
+    border-bottom: none;
+  }
+  
+  .categories li>a:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
+  
+  .categories .active {
+    font-weight: 600;
+  }
+  
+  .categories .category-count {
+    color: rgba(0, 0, 0, 0.4);
+  }
+  
+  
+  @media(min-width: 768px) {
+    .posts-list .post-preview h2 {
+      font-size: 26px;
+    }
+    .posts-list .post-preview .thumbnail {
+      float: right;
+      width: 30%;
+      margin-bottom: 0;
+    }
+    .posts-list .post-preview .description {
+      float: left;
+      width: 45%;
+    }
+    .posts-list .post-preview .metadata {
+      float: left;
+      width: 20%;
+      margin-top: 8px;
+    }
+    .posts-list .post-preview p {
+      margin: 0 0 12px 0;
+      line-height: 1.5em;
+      font-size: 16px;
+    }
+    .posts-with-sidebar .posts-list {
+      float: left;
+      width: 75%;
+    }
+    .posts-with-sidebar .posts-sidebar {
+      float: right;
+      width: 20%;
+      margin-top: 60px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+  
+  
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+  
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+  
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+  
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+  
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+  
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+  
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+  
+  
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+  
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+  
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+  
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+  
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+  
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+  
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+  
+  .downlevel .posts-list .post-preview {
+    color: inherit;
+  }
+  
+  
+  
+  </style>
+  
+  <script type="application/javascript">
+  
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+  
+  // show body when load is complete
+  function on_load_complete() {
+  
+    // add anchors
+    if (window.anchors) {
+      window.anchors.options.placement = 'left';
+      window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+    }
+  
+  
+    // set body to visible
+    document.body.style.visibility = 'visible';
+  
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+  
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+  
+  function init_distill() {
+  
+    init_common();
+  
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+  
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+  
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+  
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+  
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+  
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+  
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+  
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+  
+    // move refs into #references-listing
+    $('#references-listing').replaceWith($('#refs'));
+  
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-contents a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+  
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+  
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+  
+      // capture layout
+      var layout = $(this).attr('data-layout');
+  
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+  
+  
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+  
+    // remove code block used to force  highlighting css
+    $('.distill-force-highlighting-css').parent().remove();
+  
+    // remove empty line numbers inserted by pandoc when using a
+    // custom syntax highlighting theme
+    $('code.sourceCode a:empty').remove();
+  
+    // load distill framework
+    load_distill_framework();
+  
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+  
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+  
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+  
+      // article with toc class
+      $('.d-contents').parent().addClass('d-article-with-toc');
+  
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+  
+      // add orcid ids
+      $('.authors-affiliations').find('.author').each(function(i, el) {
+        var orcid_id = front_matter.authors[i].orcidID;
+        if (orcid_id) {
+          var a = $('<a></a>');
+          a.attr('href', 'https://orcid.org/' + orcid_id);
+          var img = $('<img></img>');
+          img.addClass('orcid-id');
+          img.attr('alt', 'ORCID ID');
+          img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+          a.append(img);
+          $(this).append(a);
+        }
+      });
+  
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+  
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+  
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+  
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+  
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+  
+      // remove d-appendix and d-footnote-list local styles
+      $('d-appendix > style:first-child').remove();
+      $('d-footnote-list > style:first-child').remove();
+  
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+  
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
+  
+      // clear polling timer
+      clearInterval(tid);
+  
+      // show body now that everything is ready
+      on_load_complete();
+    }
+  
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+  
+  }
+  
+  function init_downlevel() {
+  
+    init_common();
+  
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+  
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+  
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+  
+    // remove toc
+    $('.d-contents').remove();
+  
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+  
+  
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+  
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+  
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+  
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+  
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+  
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+  
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+  
+    $('body').addClass('downlevel');
+  
+    on_load_complete();
+  }
+  
+  
+  function init_common() {
+  
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+  
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+  
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+  
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+  
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+  
+      }
+    });
+  
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+  
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      });
+    }
+  
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+  
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+  
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+  
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+  
+  </script>
+  
+  <!--/radix_placeholder_distill-->
+  <script src="machine-learning_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="machine-learning_files/popper-2.6.0/popper.min.js"></script>
+  <link href="machine-learning_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="machine-learning_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="machine-learning_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="machine-learning_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="machine-learning_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="machine-learning_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="machine-learning_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"Machine Learning","description":"How do different aspects, such as the locations, room types and availability over a month, affect the price of the Airbnb? How to determine which neighborhood the Airbnb is in according to its price, property type, room type, and reviews per month etc.?","authors":[{"author":"Jiashu Liu","authorURL":{},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-01-14T00:00:00.000+00:00","citationText":"Liu, 2022"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>Machine Learning</h1>
+<!--radix_placeholder_categories-->
+<!--/radix_placeholder_categories-->
+<p><p>How do different aspects, such as the locations, room types and availability over a month, affect the price of the Airbnb? How to determine which neighborhood the Airbnb is in according to its price, property type, room type, and reviews per month etc.?</p></p>
+</div>
+
+<div class="d-byline">
+  Jiashu Liu true 
+  
+<br/>01-14-2022
+</div>
+
+<div class="d-article">
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/include_graphics.html'>include_graphics</a></span><span class='op'>(</span><span class='st'>"machine-learning-featured.jpeg"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="machine-learning-featured.jpeg" width="372" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/topepo/caret/'>caret</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://www.StatLearning.com'>ISLR</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>splines</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>gam</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://stringr.tidyverse.org'>stringr</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>leaps</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://www.milbo.org/rpart-plot/index.html'>rpart.plot</a></span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>airbnb_kaggle</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"~/Desktop/253R/NYC_airbnb_kaggle.csv"</span><span class='op'>)</span>
+<span class='va'>neighbourhood</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"~/Desktop/253R/NYC_nbhd_kaggle.csv"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>253</span><span class='op'>)</span>
+<span class='va'>airbnb</span> <span class='op'>&lt;-</span> <span class='va'>airbnb_kaggle</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/mutate-joins.html'>left_join</a></span><span class='op'>(</span><span class='va'>neighbourhood</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"neighbourhood_cleansed"</span> <span class='op'>=</span> <span class='st'>"neighbourhood"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/filter.html'>filter</a></span> <span class='op'>(</span><span class='va'>price</span> <span class='op'>&lt;</span> <span class='fl'>1000</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/sample_n.html'>sample_n</a></span><span class='op'>(</span><span class='fl'>5000</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/select.html'>select</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>id</span>, <span class='op'>-</span><span class='va'>host_response_time</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/mutate.html'>mutate</a></span><span class='op'>(</span>host_response_rate <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/stringr/man/str_remove.html'>str_remove_all</a></span><span class='op'>(</span><span class='va'>host_response_rate</span>, <span class='st'>"%"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/mutate.html'>mutate</a></span><span class='op'>(</span>host_is_superhost <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/logical.html'>as.logical</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/chartr.html'>toupper</a></span><span class='op'>(</span><span class='va'>host_is_superhost</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/mutate.html'>mutate</a></span><span class='op'>(</span>host_has_profile_pic <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/logical.html'>as.logical</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/chartr.html'>toupper</a></span><span class='op'>(</span><span class='va'>host_has_profile_pic</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/mutate.html'>mutate</a></span><span class='op'>(</span>is_location_exact <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/logical.html'>as.logical</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/chartr.html'>toupper</a></span><span class='op'>(</span><span class='va'>is_location_exact</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/mutate.html'>mutate</a></span><span class='op'>(</span>instant_bookable <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/logical.html'>as.logical</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/chartr.html'>toupper</a></span><span class='op'>(</span><span class='va'>instant_bookable</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/mutate.html'>mutate</a></span><span class='op'>(</span>is_business_travel_ready <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/logical.html'>as.logical</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/chartr.html'>toupper</a></span><span class='op'>(</span><span class='va'>is_business_travel_ready</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/mutate.html'>mutate</a></span><span class='op'>(</span>require_guest_profile_picture <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/logical.html'>as.logical</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/chartr.html'>toupper</a></span><span class='op'>(</span><span class='va'>require_guest_profile_picture</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/na_if.html'>na_if</a></span><span class='op'>(</span><span class='st'>"N/A"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>airbnb_select</span> <span class='op'>&lt;-</span> <span class='va'>airbnb</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/select.html'>select</a></span><span class='op'>(</span><span class='va'>price</span>,<span class='va'>property_type</span>,<span class='va'>room_type</span>,<span class='va'>accommodates</span>,<span class='va'>beds</span>,<span class='va'>guests_included</span>,<span class='va'>minimum_nights</span>,<span class='va'>availability_30</span>,<span class='va'>bathrooms</span>,<span class='va'>bedrooms</span>,<span class='va'>review_scores_rating</span>,<span class='va'>is_business_travel_ready</span>,<span class='va'>cancellation_policy</span>,<span class='va'>require_guest_profile_picture</span>,<span class='va'>reviews_per_month</span>,<span class='va'>neighbourhood_group</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h2 id="data-context">Data context</h2>
+<h3 id="clearly-describe-what-the-cases-in-the-final-clean-dataset-represent.">Clearly describe what the cases in the final clean dataset represent.</h3>
+<p>This dataset describes the listing house resources and metrics in New York City for 2019. Each case in the final clean dataset represents one airbnb with correspoinding price, nerighborhood, accommodates, etc.</p>
+<h3 id="broadly-describe-the-variables-used-in-your-analyses.">Broadly describe the variables used in your analyses.</h3>
+<p>It contains quantitative variable, for example, price, maximum and minimum nights, host response rate, the number of guests the property can accommodate, the number of bedrooms and bathrooms of the property, the amenities available, number of reviews,review score rating, reviews per month and also categorical variables, for example, the position of the property, the type of the room ( a house or an apartment), if the host has profile picture, th type of beds in the room, if the property is instant bookable, if the property is business travel ready, the cancellation policy, and the neighbourhood group of the property.</p>
+<h3 id="who-collected-the-data-when-why-and-how">Who collected the data? When, why, and how?</h3>
+<p>Dgomonov posted the data 2 years ago. The data file includes all needed information to find out more about hosts, geographical availability, necessary metrics to make predictions and draw conclusions. He posted it mainly to answer the following questions: What can we learn about different hosts and areas? What can we learn from predictions(ex: locations, prices, reviews, etc)?Which hosts are the busiest and why? Is there any noticeable difference of traffic among different areas and what could be the reason for it?</p>
+<h2 id="research-questions">Research questions</h2>
+<h3 id="research-questions-for-the-regression-task-make-clear-the-outcome-variable-and-its-units">Research question(s) for the regression task make clear the outcome variable and its units</h3>
+<p>How do different aspects, such as the locations, room types and availability over a month, affect the price of the Airbnb? The units is dollars.</p>
+<h3 id="research-questions-for-the-classification-task-make-clear-the-outcome-variable-and-its-possible-categories">Research question(s) for the classification task make clear the outcome variable and its possible categories</h3>
+<p>How to determine which neighborhood the Airbnb is in according to its price, property type, room type, and reviews per month etc.? Possible categories: Brooklyn, Queens, Manhattan</p>
+<h2 id="hw3-investigations---methods">HW3 investigations - Methods</h2>
+<h3 id="describe-the-models-used-in-your-hw3-project-work-investigations">Describe the models used in your HW3 project work investigations</h3>
+<p>We are using ordinary least squares (OLS) regression, backward selection, and LASSO to build initial models</p>
+<h4 id="backstep-model">backstep model</h4>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>253</span><span class='op'>)</span>
+<span class='va'>back_step_mod1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/train.html'>train</a></span><span class='op'>(</span>
+  <span class='va'>price</span><span class='op'>~</span><span class='va'>property_type</span><span class='op'>+</span>
+                   <span class='va'>room_type</span><span class='op'>+</span>
+                   <span class='va'>accommodates</span><span class='op'>+</span>
+                   <span class='va'>beds</span><span class='op'>+</span>
+                   <span class='va'>guests_included</span><span class='op'>+</span>
+                   <span class='va'>minimum_nights</span><span class='op'>+</span>
+                   <span class='va'>availability_30</span><span class='op'>+</span>
+                   <span class='va'>bathrooms</span><span class='op'>+</span>
+                   <span class='va'>bedrooms</span><span class='op'>+</span>
+                   <span class='va'>review_scores_rating</span><span class='op'>+</span>
+                   <span class='va'>is_business_travel_ready</span><span class='op'>+</span>
+                   <span class='va'>require_guest_profile_picture</span><span class='op'>+</span>
+                   <span class='va'>reviews_per_month</span><span class='op'>+</span>
+                   <span class='va'>neighbourhood_group</span>,
+    data <span class='op'>=</span> <span class='va'>airbnb_select</span>,
+    method <span class='op'>=</span> <span class='st'>"leapBackward"</span>,
+    tuneGrid <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>nvmax <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>13</span><span class='op'>)</span>,
+    trControl <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/trainControl.html'>trainControl</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"cv"</span>, number <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>,
+    metric <span class='op'>=</span> <span class='st'>"MAE"</span>,
+    na.action <span class='op'>=</span> <span class='va'>na.omit</span>
+<span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Reordering variables and trying again:
+Reordering variables and trying again:
+Reordering variables and trying again:</code></pre>
+</div>
+<h4 id="lasso-model">LASSO model</h4>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>253</span><span class='op'>)</span>
+<span class='va'>lasso_mod1</span> <span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/pkg/caret/man/train.html'>train</a></span><span class='op'>(</span>data<span class='op'>=</span><span class='va'>airbnb_select</span>,
+                <span class='va'>price</span><span class='op'>~</span><span class='va'>property_type</span><span class='op'>+</span>
+                  <span class='va'>room_type</span><span class='op'>+</span>
+                  <span class='va'>accommodates</span><span class='op'>+</span>
+                  <span class='va'>beds</span><span class='op'>+</span>
+                  <span class='va'>guests_included</span><span class='op'>+</span>
+                  <span class='va'>minimum_nights</span><span class='op'>+</span>
+                  <span class='va'>availability_30</span><span class='op'>+</span>
+                  <span class='va'>bathrooms</span><span class='op'>+</span><span class='va'>bedrooms</span><span class='op'>+</span>
+                  <span class='va'>review_scores_rating</span><span class='op'>+</span>
+                  <span class='va'>is_business_travel_ready</span><span class='op'>+</span>
+                  <span class='va'>cancellation_policy</span><span class='op'>+</span>
+                  <span class='va'>require_guest_profile_picture</span><span class='op'>+</span>
+                  <span class='va'>reviews_per_month</span><span class='op'>+</span>
+                  <span class='va'>neighbourhood_group</span>,
+                method<span class='op'>=</span><span class='st'>"glmnet"</span>,
+                trControl<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/pkg/caret/man/trainControl.html'>trainControl</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"cv"</span>, number <span class='op'>=</span> <span class='fl'>10</span>, selectionFunction <span class='op'>=</span> <span class='st'>"oneSE"</span><span class='op'>)</span>,
+                tuneGrid <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>1</span>, lambda <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>20</span>, length.out <span class='op'>=</span> <span class='fl'>100</span><span class='op'>)</span><span class='op'>)</span>,
+                metric <span class='op'>=</span> <span class='st'>"MAE"</span>,
+                na.action <span class='op'>=</span> <span class='va'>na.omit</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h4 id="backstep-modelnon-linearity">backstep model(non-linearity)</h4>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>back_step_mod2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/train.html'>train</a></span><span class='op'>(</span>
+    <span class='va'>price</span> <span class='op'>~</span> <span class='va'>property_type</span><span class='op'>+</span>
+                  <span class='va'>room_type</span><span class='op'>+</span>
+                  <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>accommodates</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>+</span>
+                  <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>beds</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>+</span>
+                  <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>guests_included</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>+</span>
+                  <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>minimum_nights</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>+</span>
+                  <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>availability_30</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>+</span>
+                  <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>bathrooms</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>+</span><span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>bedrooms</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>+</span>
+                  <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>review_scores_rating</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>+</span>
+                  <span class='va'>is_business_travel_ready</span><span class='op'>+</span>
+                  <span class='va'>cancellation_policy</span><span class='op'>+</span>
+                  <span class='va'>require_guest_profile_picture</span><span class='op'>+</span>
+                  <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>reviews_per_month</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>+</span>
+                  <span class='va'>neighbourhood_group</span>,
+    data <span class='op'>=</span> <span class='va'>airbnb_select</span>,
+    method <span class='op'>=</span> <span class='st'>"leapBackward"</span>,
+    tuneGrid <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>nvmax <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>33</span><span class='op'>)</span>,
+    trControl <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/trainControl.html'>trainControl</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"cv"</span>, number <span class='op'>=</span><span class='fl'>10</span><span class='op'>)</span>,
+    metric <span class='op'>=</span> <span class='st'>"MAE"</span>,
+    na.action <span class='op'>=</span> <span class='va'>na.omit</span>
+<span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Reordering variables and trying again:
+Reordering variables and trying again:
+Reordering variables and trying again:
+Reordering variables and trying again:
+Reordering variables and trying again:
+Reordering variables and trying again:
+Reordering variables and trying again:
+Reordering variables and trying again:
+Reordering variables and trying again:
+Reordering variables and trying again:
+Reordering variables and trying again:</code></pre>
+</div>
+<h4 id="lasso-modelnon-linearity">LASSO model(non-linearity)</h4>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>253</span><span class='op'>)</span>
+<span class='va'>lasso_mod2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/train.html'>train</a></span><span class='op'>(</span>data<span class='op'>=</span><span class='va'>airbnb_select</span>,
+                <span class='va'>price</span><span class='op'>~</span><span class='va'>property_type</span><span class='op'>+</span>
+                  <span class='va'>room_type</span><span class='op'>+</span>
+                  <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>accommodates</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>+</span>
+                  <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>beds</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>+</span>
+                  <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>guests_included</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>+</span>
+                  <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>minimum_nights</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>+</span>
+                  <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>availability_30</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>+</span>
+                  <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>bathrooms</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>+</span><span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>bedrooms</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>+</span>
+                  <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>review_scores_rating</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>+</span>
+                  <span class='va'>is_business_travel_ready</span><span class='op'>+</span>
+                  <span class='va'>cancellation_policy</span><span class='op'>+</span>
+                  <span class='va'>require_guest_profile_picture</span><span class='op'>+</span>
+                  <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>reviews_per_month</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>+</span>
+                  <span class='va'>neighbourhood_group</span>,
+                method<span class='op'>=</span><span class='st'>"glmnet"</span>,
+                trControl<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/pkg/caret/man/trainControl.html'>trainControl</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"cv"</span>, number <span class='op'>=</span> <span class='fl'>10</span>, selectionFunction <span class='op'>=</span> <span class='st'>"oneSE"</span><span class='op'>)</span>,
+                tuneGrid <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>1</span>, lambda <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>20</span>, length.out <span class='op'>=</span> <span class='fl'>100</span><span class='op'>)</span><span class='op'>)</span>,
+                metric <span class='op'>=</span> <span class='st'>"MAE"</span>,
+                na.action <span class='op'>=</span> <span class='va'>na.omit</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h3 id="describe-what-you-did-to-evaluate-modelsindicate-how-you-estimated-quantitative-evaluation-metrics.">Describe what you did to evaluate models:Indicate how you estimated quantitative evaluation metrics.</h3>
+<p>We are using Cross-validation to get the error metric (MAE) for each model.</p>
+<h3 id="describe-what-you-did-to-evaluate-modelsindicate-what-plots-you-used-to-evaluate-models.">Describe what you did to evaluate models:Indicate what plots you used to evaluate models.</h3>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>back_step_mod1</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="machine-learning_files/figure-html5/unnamed-chunk-10-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>back_step_mod2</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="machine-learning_files/figure-html5/unnamed-chunk-11-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>lasso_mod1</span><span class='op'>$</span><span class='va'>finalModel</span>, xvar <span class='op'>=</span> <span class='st'>"lambda"</span>, label <span class='op'>=</span> <span class='cn'>TRUE</span>, col <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/grDevices/palettes.html'>rainbow</a></span><span class='op'>(</span><span class='fl'>20</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="machine-learning_files/figure-html5/unnamed-chunk-12-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>lasso_mod1</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="machine-learning_files/figure-html5/unnamed-chunk-13-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>lasso_mod2</span><span class='op'>$</span><span class='va'>finalModel</span>, xvar <span class='op'>=</span> <span class='st'>"lambda"</span>, label <span class='op'>=</span> <span class='cn'>TRUE</span>, col <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/grDevices/palettes.html'>rainbow</a></span><span class='op'>(</span><span class='fl'>20</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="machine-learning_files/figure-html5/unnamed-chunk-14-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>lasso_mod2</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="machine-learning_files/figure-html5/unnamed-chunk-15-1.png" width="624" /></p>
+</div>
+<h4 id="describe-the-goals-purpose-of-the-methods-used-in-the-overall-context-of-your-research-investigations.">Describe the goals / purpose of the methods used in the overall context of your research investigations.</h4>
+<p>We are using backstep and LASSO to give us the most importance variables is determining the price for airbnb so that we can build the best model with the least error.</p>
+<h2 id="hw3-investigations---results---variable-importance">HW3 investigations - Results - Variable Importance</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/coef.html'>coef</a></span><span class='op'>(</span><span class='va'>back_step_mod1</span><span class='op'>$</span><span class='va'>finalModel</span>, id <span class='op'>=</span> <span class='va'>back_step_mod1</span><span class='op'>$</span><span class='va'>bestTune</span><span class='op'>$</span><span class='va'>nvmax</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>                 (Intercept)            property_typeLoft 
+                 -85.2770735                   42.5372287 
+       room_typePrivate room         room_typeShared room 
+                 -65.2373542                  -99.2099475 
+                accommodates              availability_30 
+                  16.6564474                    1.3883010 
+                   bathrooms                     bedrooms 
+                  42.9432279                   19.9938378 
+        review_scores_rating is_business_travel_readyTRUE 
+                   0.9346349                   23.4920665 
+           reviews_per_month  neighbourhood_groupBrooklyn 
+                  -4.3343584                   19.0406893 
+neighbourhood_groupManhattan 
+                  75.9064135 </code></pre>
+</div>
+<p>lasso_mod1$bestTune</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/coef.html'>coef</a></span><span class='op'>(</span><span class='va'>back_step_mod2</span><span class='op'>$</span><span class='va'>finalModel</span>, id <span class='op'>=</span> <span class='va'>back_step_mod2</span><span class='op'>$</span><span class='va'>bestTune</span><span class='op'>$</span><span class='va'>nvmax</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>                      (Intercept)      property_typeBed &amp; Breakfast 
+                       136.501411                         58.046478 
+      property_typeBoutique hotel             property_typeBungalow 
+                        94.393039                         97.167507 
+         property_typeCondominium                 property_typeLoft 
+                        23.000770                         38.655719 
+               property_typeOther            property_typeTimeshare 
+                       -25.309616                        106.688101 
+            room_typePrivate room              room_typeShared room 
+                       -62.646588                        -95.134088 
+             ns(accommodates, 3)1              ns(accommodates, 3)2 
+                        87.594419                        223.486354 
+             ns(accommodates, 3)3                      ns(beds, 3)1 
+                       317.059915                        208.308623 
+          ns(availability_30, 3)2                 ns(bathrooms, 3)2 
+                      -106.446435                         16.847071 
+                ns(bathrooms, 3)3                  ns(bedrooms, 3)1 
+                       210.379532                        156.472509 
+                 ns(bedrooms, 3)3      ns(review_scores_rating, 3)1 
+                      -125.667711                         17.017334 
+     ns(review_scores_rating, 3)2      ns(review_scores_rating, 3)3 
+                       -10.835262                         38.909375 
+     is_business_travel_readyTRUE         cancellation_policystrict 
+                        23.360193                          6.010115 
+require_guest_profile_pictureTRUE         ns(reviews_per_month, 3)1 
+                        -9.927512                        -36.850288 
+        ns(reviews_per_month, 3)2         ns(reviews_per_month, 3)3 
+                       -37.379303                        -27.257503 
+      neighbourhood_groupBrooklyn         neighbourhood_groupQueens 
+                       -51.971376                        -64.997556 
+ neighbourhood_groupStaten Island                      ns(beds, 3)3 
+                       -94.388528                          0.000000 
+          ns(guests_included, 3)2           ns(guests_included, 3)3 
+                        42.898211                          0.000000 </code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/coef.html'>coef</a></span><span class='op'>(</span><span class='va'>lasso_mod1</span><span class='op'>$</span><span class='va'>finalModel</span>, <span class='va'>lasso_mod1</span><span class='op'>$</span><span class='va'>bestTune</span><span class='op'>$</span><span class='va'>lambda</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>37 x 1 sparse Matrix of class &quot;dgCMatrix&quot;
+                                             1
+(Intercept)                         28.2142255
+property_typeBed &amp; Breakfast         .        
+property_typeBoutique hotel          .        
+property_typeBungalow                .        
+property_typeCastle                  .        
+property_typeCondominium             .        
+property_typeDorm                    .        
+property_typeGuesthouse              .        
+property_typeHostel                  .        
+property_typeHouse                   .        
+property_typeIn-law                  .        
+property_typeLoft                    .        
+property_typeOther                   .        
+property_typeTimeshare               .        
+property_typeTownhouse               .        
+property_typeVacation home           .        
+property_typeVilla                   .        
+room_typePrivate room              -53.8935906
+room_typeShared room               -45.4601336
+accommodates                        17.5889324
+beds                                 .        
+guests_included                      .        
+minimum_nights                       .        
+availability_30                      0.1085711
+bathrooms                           28.0328492
+bedrooms                            14.5657164
+review_scores_rating                 0.1391349
+is_business_travel_readyTRUE         6.7364410
+cancellation_policymoderate          .        
+cancellation_policystrict            .        
+cancellation_policysuper_strict_30   .        
+require_guest_profile_pictureTRUE    .        
+reviews_per_month                   -0.0342434
+neighbourhood_groupBrooklyn          .        
+neighbourhood_groupManhattan        45.4968160
+neighbourhood_groupQueens            .        
+neighbourhood_groupStaten Island     .        </code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>lasso_mod1</span><span class='op'>$</span><span class='va'>bestTune</span>
+</code></pre>
+</div>
+<pre><code>   alpha   lambda
+34     1 6.666667</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/coef.html'>coef</a></span><span class='op'>(</span><span class='va'>lasso_mod2</span><span class='op'>$</span><span class='va'>finalModel</span>,<span class='va'>lasso_mod2</span><span class='op'>$</span><span class='va'>bestTune</span><span class='op'>$</span><span class='va'>lambda</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>55 x 1 sparse Matrix of class &quot;dgCMatrix&quot;
+                                               1
+(Intercept)                         4.537612e+02
+property_typeBed &amp; Breakfast        .           
+property_typeBoutique hotel         .           
+property_typeBungalow               .           
+property_typeCastle                 .           
+property_typeCondominium            .           
+property_typeDorm                   .           
+property_typeGuesthouse             .           
+property_typeHostel                 .           
+property_typeHouse                  .           
+property_typeIn-law                 .           
+property_typeLoft                   1.718411e+01
+property_typeOther                  .           
+property_typeTimeshare              1.512782e+01
+property_typeTownhouse              .           
+property_typeVacation home          .           
+property_typeVilla                  .           
+room_typePrivate room              -6.015042e+01
+room_typeShared room               -7.182060e+01
+ns(accommodates, 3)1                4.799029e+01
+ns(accommodates, 3)2                1.577494e+01
+ns(accommodates, 3)3                .           
+ns(beds, 3)1                       -4.561228e+02
+ns(beds, 3)2                       -1.953655e-08
+ns(beds, 3)3                        2.882620e-09
+ns(guests_included, 3)1            -9.860194e+01
+ns(guests_included, 3)2             .           
+ns(guests_included, 3)3             .           
+ns(minimum_nights, 3)1              .           
+ns(minimum_nights, 3)2              .           
+ns(minimum_nights, 3)3              .           
+ns(availability_30, 3)1             .           
+ns(availability_30, 3)2             .           
+ns(availability_30, 3)3             1.934964e+01
+ns(bathrooms, 3)1                   3.253384e+01
+ns(bathrooms, 3)2                   .           
+ns(bathrooms, 3)3                   1.260215e+02
+ns(bedrooms, 3)1                    1.071624e+02
+ns(bedrooms, 3)2                    1.290263e+01
+ns(bedrooms, 3)3                    .           
+ns(review_scores_rating, 3)1        .           
+ns(review_scores_rating, 3)2        .           
+ns(review_scores_rating, 3)3        1.068735e+01
+is_business_travel_readyTRUE        1.483162e+01
+cancellation_policymoderate         .           
+cancellation_policystrict           7.410141e-01
+cancellation_policysuper_strict_30  .           
+require_guest_profile_pictureTRUE   .           
+ns(reviews_per_month, 3)1          -4.262304e+00
+ns(reviews_per_month, 3)2           .           
+ns(reviews_per_month, 3)3           .           
+neighbourhood_groupBrooklyn         .           
+neighbourhood_groupManhattan        4.935111e+01
+neighbourhood_groupQueens          -3.738944e+00
+neighbourhood_groupStaten Island    .           </code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>lasso_mod2</span><span class='op'>$</span><span class='va'>bestTune</span>
+</code></pre>
+</div>
+<pre><code>   alpha   lambda
+21     1 4.040404</code></pre>
+</div>
+<h2 id="hw3-investigations---summary">HW3 investigations - Summary</h2>
+<h3 id="if-it-was-appropriate-to-fit-a-gam-for-your-investigations-having-some-quantitative-predictors-show-plots-of-estimated-functions-for-each-predictor-and-provide-some-general-interpretations.">If it was appropriate to fit a GAM for your investigations (having some quantitative predictors), show plots of estimated functions for each predictor, and provide some general interpretations.</h3>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>airbnb_select</span> <span class='op'>&lt;-</span><span class='va'>airbnb_select</span><span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/mutate.html'>mutate</a></span><span class='op'>(</span>room_type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/stringr/man/str_replace.html'>str_replace</a></span><span class='op'>(</span><span class='va'>room_type</span>,<span class='st'>"/"</span>,<span class='st'>"_"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/mutate.html'>mutate</a></span><span class='op'>(</span>property_type<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/pkg/stringr/man/str_replace.html'>str_replace</a></span><span class='op'>(</span><span class='va'>property_type</span>,<span class='st'>" "</span>,<span class='st'>"_"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/mutate.html'>mutate</a></span><span class='op'>(</span>property_type<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/pkg/stringr/man/str_replace.html'>str_replace</a></span><span class='op'>(</span><span class='va'>property_type</span>,<span class='st'>"&amp;"</span>,<span class='st'>"and"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/mutate.html'>mutate</a></span><span class='op'>(</span>room_type<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/pkg/stringr/man/str_replace.html'>str_replace</a></span><span class='op'>(</span><span class='va'>room_type</span>,<span class='st'>" "</span>,<span class='st'>"_"</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>gam_mod</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/train.html'>train</a></span><span class='op'>(</span>
+    <span class='va'>price</span> <span class='op'>~</span> <span class='va'>property_type</span><span class='op'>+</span><span class='va'>room_type</span><span class='op'>+</span><span class='va'>accommodates</span><span class='op'>+</span><span class='va'>beds</span><span class='op'>+</span><span class='va'>availability_30</span><span class='op'>+</span><span class='va'>bathrooms</span><span class='op'>+</span><span class='va'>bedrooms</span><span class='op'>+</span><span class='va'>review_scores_rating</span><span class='op'>+</span><span class='va'>is_business_travel_ready</span><span class='op'>+</span><span class='va'>cancellation_policy</span><span class='op'>+</span><span class='va'>require_guest_profile_picture</span><span class='op'>+</span><span class='va'>reviews_per_month</span><span class='op'>+</span><span class='va'>neighbourhood_group</span>,
+    data <span class='op'>=</span> <span class='va'>airbnb_select</span>,
+    method <span class='op'>=</span> <span class='st'>"gamLoess"</span>,
+    tuneGrid <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>degree <span class='op'>=</span> <span class='fl'>1</span>, span <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>0.5</span>, <span class='fl'>0.9</span>, by <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span><span class='op'>)</span>,
+    trControl <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/trainControl.html'>trainControl</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"cv"</span>, number <span class='op'>=</span> <span class='fl'>10</span>, selectionFunction <span class='op'>=</span> <span class='st'>"best"</span><span class='op'>)</span>,
+    metric <span class='op'>=</span> <span class='st'>"MAE"</span>,
+    na.action <span class='op'>=</span> <span class='va'>na.omit</span>
+<span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>gam_mod</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="machine-learning_files/figure-html5/unnamed-chunk-24-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>gam_mod</span><span class='op'>$</span><span class='va'>bestTune</span>
+</code></pre>
+</div>
+<pre><code>  span degree
+4  0.8      1</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>gam_mod</span><span class='op'>$</span><span class='va'>results</span>
+</code></pre>
+</div>
+<pre><code>  degree span     RMSE  Rsquared      MAE   RMSESD RsquaredSD
+1      1  0.5 71.97479 0.5426029 46.33544 7.453021 0.05864371
+2      1  0.6 72.15273 0.5402207 46.36719 7.496241 0.05875839
+3      1  0.7 72.14868 0.5402947 46.35076 7.524888 0.05837212
+4      1  0.8 72.05228 0.5416986 46.30354 7.542049 0.05680126
+5      1  0.9 72.28611 0.5392523 46.38776 7.444010 0.05745448
+     MAESD
+1 2.731209
+2 2.778289
+3 2.801967
+4 2.790979
+5 2.702376</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span>mfrow <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span> 
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>gam_mod</span><span class='op'>$</span><span class='va'>finalModel</span>, se <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="machine-learning_files/figure-html5/unnamed-chunk-27-1.png" width="624" /><img src="machine-learning_files/figure-html5/unnamed-chunk-27-2.png" width="624" /></p>
+</div>
+<h3 id="compare-the-different-models-tried-in-hw3-in-light-of-evaluation-metrics-plots-variable-importance-and-data-context.">Compare the different models tried in HW3 in light of evaluation metrics, plots, variable importance, and data context.</h3>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>back_step_mod1</span><span class='op'>$</span><span class='va'>results</span><span class='op'>%&gt;%</span><span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/arrange.html'>arrange</a></span><span class='op'>(</span><span class='va'>MAE</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>   nvmax     RMSE  Rsquared      MAE    RMSESD RsquaredSD    MAESD
+1     12 72.98635 0.5314867 47.05032  8.864716 0.06180036 4.698911
+2     13 72.94037 0.5320430 47.09100  8.909402 0.06197000 4.758874
+3     11 73.35474 0.5268672 47.18558  9.172819 0.06640328 4.748255
+4     10 73.71227 0.5221883 47.41033  9.129361 0.06556328 4.613322
+5      9 73.74951 0.5217272 47.41785  9.072827 0.06490551 4.605261
+6      8 75.47040 0.4976637 48.56121 10.600336 0.09221835 6.389535
+7      7 76.02226 0.4902120 48.84950 10.782719 0.09507896 6.456871
+8      6 76.70402 0.4815122 48.99362 10.294154 0.08732097 6.013864
+9      5 77.04247 0.4767976 49.42593 10.398974 0.09008398 5.969724
+10     4 79.73213 0.4384626 51.86089 12.255834 0.12488981 8.255331
+11     3 81.79975 0.4106629 51.97176 12.203271 0.12167526 7.849759
+12     2 84.19791 0.3773368 54.58298 11.115808 0.10856039 6.414198
+13     1 88.52947 0.3130145 58.68240  9.588493 0.08367745 4.581482</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>back_step_mod2</span><span class='op'>$</span><span class='va'>results</span><span class='op'>%&gt;%</span><span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/arrange.html'>arrange</a></span><span class='op'>(</span><span class='va'>MAE</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>   nvmax     RMSE  Rsquared      MAE    RMSESD RsquaredSD    MAESD
+1     33 73.09247 0.5292605 46.87471  8.596460 0.06542012 3.499047
+2     32 73.72431 0.5195881 47.30040  8.577189 0.07533171 3.822726
+3     31 74.69339 0.5085342 47.86174  8.647195 0.06872917 4.158839
+4     24 76.69046 0.4819028 49.34774  8.113874 0.05716132 3.656255
+5     25 76.63081 0.4826913 49.35683  8.085324 0.05752166 3.636491
+6     26 76.61410 0.4831044 49.37018  8.081757 0.05769250 3.616432
+7     30 76.62451 0.4831330 49.44171  7.997201 0.05636321 3.575096
+8     27 76.70885 0.4818289 49.45236  8.095141 0.05763963 3.557633
+9     29 76.66010 0.4826699 49.45753  7.994318 0.05645464 3.562401
+10    28 76.70160 0.4820796 49.46388  8.012774 0.05682388 3.565571
+11    23 77.14079 0.4758450 49.59050  8.185427 0.05582625 3.949748
+12    21 77.89379 0.4656099 50.01619  8.342677 0.06355732 4.054622
+13    22 77.83551 0.4664104 50.05467  8.581638 0.06539143 4.100617
+14    20 78.09491 0.4629400 50.13207  8.376072 0.06264001 4.065126
+15    19 78.22717 0.4610015 50.19965  8.323257 0.06406751 4.081213
+16    18 78.55975 0.4562733 50.37320  8.321719 0.06496953 4.008462
+17    17 78.70021 0.4541464 50.41238  7.994112 0.06094534 3.804760
+18    13 79.51972 0.4428275 50.44324  8.702268 0.06367360 3.815595
+19    16 78.80367 0.4527589 50.44985  8.106640 0.06359760 3.810910
+20    15 78.94829 0.4506917 50.45905  8.012336 0.06268506 3.705767
+21    14 79.07498 0.4489635 50.50249  7.983038 0.06171185 3.725924
+22    11 80.45748 0.4294152 50.62274  8.477185 0.06311335 4.005022
+23    12 80.50161 0.4287844 50.73593  8.468198 0.06212429 3.954089
+24    10 80.87210 0.4236371 50.87730  8.518680 0.06372398 4.084642
+25     9 81.17417 0.4193247 50.97000  8.543384 0.06462675 4.355906
+26     8 81.74300 0.4114554 51.28481  8.787337 0.06482871 4.616931
+27     7 82.03271 0.4077286 51.46157  8.644961 0.06335829 4.489777
+28     6 83.60256 0.3864834 52.79209  9.033824 0.07340157 5.120213
+29     5 84.08148 0.3786051 53.19324  9.019775 0.07322104 5.235966
+30     4 86.80286 0.3391471 55.62523  8.497684 0.07615689 4.618378
+31     3 87.71496 0.3265341 56.29427  9.071213 0.07451964 5.050295
+32     2 90.26762 0.2878340 59.62053  8.510985 0.08692065 3.901856
+33     1 96.99103 0.1714486 63.15314 12.486094 0.12215464 8.030921</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>lasso_mod1</span><span class='op'>$</span><span class='va'>results</span><span class='op'>%&gt;%</span><span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/arrange.html'>arrange</a></span><span class='op'>(</span><span class='va'>MAE</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>    alpha     lambda     RMSE  Rsquared      MAE   RMSESD RsquaredSD
+1       1  3.4343434 72.11928 0.5465897 44.45478 7.815304 0.04113100
+2       1  3.6363636 72.22337 0.5456738 44.45580 7.824418 0.04127690
+3       1  3.2323232 72.02202 0.5474258 44.45872 7.805256 0.04097631
+4       1  3.8383838 72.33410 0.5446786 44.46267 7.832444 0.04140944
+5       1  3.0303030 71.92462 0.5482753 44.46936 7.795652 0.04084291
+6       1  4.0404040 72.45091 0.5436143 44.47948 7.840271 0.04154738
+7       1  2.8282828 71.82772 0.5491342 44.48402 7.787155 0.04073973
+8       1  2.6262626 71.72856 0.5500409 44.50190 7.779818 0.04067836
+9       1  4.2424242 72.57336 0.5424811 44.50771 7.847165 0.04167850
+10      1  2.4242424 71.63316 0.5509188 44.52120 7.772745 0.04059392
+11      1  4.4444444 72.70039 0.5412900 44.54296 7.852202 0.04178272
+12      1  2.2222222 71.54709 0.5516933 44.54766 7.761503 0.04043737
+13      1  2.0202020 71.47017 0.5523699 44.58373 7.752317 0.04031248
+14      1  4.6464646 72.83177 0.5400454 44.58391 7.855779 0.04187720
+15      1  1.8181818 71.39958 0.5529938 44.62629 7.747139 0.04026103
+16      1  4.8484848 72.96290 0.5388139 44.63184 7.858140 0.04194788
+17      1  1.6161616 71.33835 0.5535262 44.68115 7.746247 0.04027321
+18      1  5.0505051 73.09868 0.5375216 44.69100 7.860217 0.04202297
+19      1  1.4141414 71.28008 0.5540533 44.74541 7.758780 0.04044126
+20      1  5.2525253 73.23508 0.5362253 44.75495 7.861254 0.04208591
+21      1  1.2121212 71.22719 0.5545471 44.82035 7.776377 0.04067364
+22      1  5.4545455 73.37494 0.5348825 44.82710 7.862925 0.04215034
+23      1  5.6565657 73.51678 0.5335115 44.90388 7.865006 0.04225070
+24      1  1.0101010 71.18834 0.5549000 44.91347 7.792225 0.04089899
+25      1  5.8585859 73.65850 0.5321416 44.98103 7.867546 0.04237321
+26      1  0.8080808 71.17441 0.5549777 45.02796 7.793617 0.04102308
+27      1  6.0606061 73.80484 0.5307049 45.06345 7.869595 0.04250260
+28      1  0.6060606 71.14105 0.5553204 45.11012 7.790254 0.04111904
+29      1  6.2626263 73.94635 0.5293409 45.14415 7.871214 0.04263732
+30      1  0.4040404 71.10408 0.5557481 45.20444 7.803716 0.04141465
+31      1  6.4646465 74.08494 0.5280235 45.22813 7.872696 0.04276054
+32      1  6.6666667 74.22690 0.5266564 45.31843 7.872514 0.04287864
+33      1  0.2020202 71.10112 0.5558198 45.34624 7.777730 0.04119109
+34      1  6.8686869 74.35927 0.5254342 45.40282 7.869809 0.04295170
+35      1  0.0000000 71.09964 0.5559108 45.45684 7.761230 0.04101512
+36      1  7.0707071 74.48360 0.5243355 45.48120 7.864445 0.04290558
+37      1  7.2727273 74.61114 0.5231900 45.56328 7.858173 0.04285211
+38      1  7.4747475 74.73283 0.5221445 45.64026 7.851881 0.04284086
+39      1  7.6767677 74.84459 0.5212625 45.70949 7.856732 0.04292459
+40      1  7.8787879 74.95902 0.5203461 45.78221 7.861762 0.04301150
+41      1  8.0808081 75.07351 0.5194348 45.85416 7.864482 0.04309598
+42      1  8.2828283 75.18292 0.5186182 45.92133 7.866265 0.04322887
+43      1  8.4848485 75.29432 0.5177768 45.99071 7.867918 0.04336483
+44      1  8.6868687 75.40825 0.5169026 46.06294 7.869479 0.04350490
+45      1  8.8888889 75.52423 0.5160022 46.13881 7.870840 0.04364906
+46      1  9.0909091 75.63813 0.5151434 46.21394 7.871002 0.04375965
+47      1  9.2929293 75.75192 0.5142937 46.29048 7.871410 0.04384618
+48      1  9.4949495 75.86811 0.5134112 46.36741 7.871732 0.04393431
+49      1  9.6969697 75.98601 0.5125066 46.44444 7.871051 0.04402158
+50      1  9.8989899 76.10558 0.5115811 46.52149 7.870206 0.04411191
+51      1 10.1010101 76.22688 0.5106331 46.59945 7.869619 0.04420694
+52      1 10.3030303 76.35049 0.5096508 46.68008 7.868964 0.04430474
+53      1 10.5050505 76.47639 0.5086339 46.76353 7.868221 0.04440531
+54      1 10.7070707 76.60451 0.5075824 46.84992 7.867308 0.04450962
+55      1 10.9090909 76.73483 0.5064962 46.93906 7.866756 0.04462386
+56      1 11.1111111 76.86727 0.5053756 47.03221 7.866330 0.04474504
+57      1 11.3131313 77.00192 0.5042181 47.12676 7.865867 0.04487033
+58      1 11.5151515 77.13876 0.5030229 47.22277 7.865371 0.04499978
+59      1 11.7171717 77.27631 0.5018158 47.31864 7.864255 0.04512951
+60      1 11.9191919 77.40835 0.5007019 47.41029 7.860809 0.04522313
+61      1 12.1212121 77.53132 0.4997500 47.49581 7.859417 0.04519442
+62      1 12.3232323 77.65609 0.4987693 47.58256 7.858005 0.04516343
+63      1 12.5252525 77.78268 0.4977586 47.67115 7.856547 0.04513008
+64      1 12.7272727 77.91093 0.4967216 47.76222 7.854863 0.04509440
+65      1 12.9292929 78.03370 0.4957903 47.84977 7.852089 0.04508440
+66      1 13.1313131 78.14734 0.4950254 47.93181 7.852855 0.04513200
+67      1 13.3333333 78.26044 0.4942754 48.01630 7.854426 0.04517186
+68      1 13.5353535 78.37511 0.4935024 48.10248 7.856024 0.04521299
+69      1 13.7373737 78.49133 0.4927058 48.19074 7.857652 0.04525546
+70      1 13.9393939 78.60897 0.4918900 48.27952 7.859121 0.04529951
+71      1 14.1414141 78.72794 0.4910564 48.36870 7.860353 0.04534536
+72      1 14.3434343 78.84829 0.4902009 48.45994 7.861851 0.04539672
+73      1 14.5454545 78.97006 0.4893225 48.55216 7.863573 0.04545306
+74      1 14.7474747 79.09333 0.4884185 48.64518 7.865312 0.04551120
+75      1 14.9494949 79.21809 0.4874884 48.73991 7.867070 0.04557122
+76      1 15.1515152 79.34436 0.4865316 48.83719 7.868848 0.04563318
+77      1 15.3535354 79.47210 0.4855475 48.93610 7.870639 0.04569714
+78      1 15.5555556 79.60131 0.4845355 49.03711 7.872449 0.04576319
+79      1 15.7575758 79.72674 0.4835863 49.13751 7.868964 0.04570229
+80      1 15.9595960 79.85200 0.4826380 49.23871 7.863857 0.04560004
+81      1 16.1616162 79.97866 0.4816622 49.34158 7.858713 0.04549468
+82      1 16.3636364 80.10673 0.4806583 49.44603 7.853534 0.04538614
+83      1 16.5656566 80.23619 0.4796258 49.55130 7.848323 0.04527438
+84      1 16.7676768 80.36679 0.4785685 49.65729 7.842746 0.04515976
+85      1 16.9696970 80.49826 0.4774916 49.76415 7.836632 0.04504430
+86      1 17.1717172 80.63067 0.4763945 49.87243 7.830539 0.04492848
+87      1 17.3737374 80.76228 0.4753138 49.98133 7.825452 0.04480600
+88      1 17.5757576 80.89506 0.4742062 50.09209 7.820529 0.04468015
+89      1 17.7777778 81.02916 0.4730682 50.20465 7.815593 0.04455096
+90      1 17.9797980 81.16456 0.4718993 50.32004 7.810644 0.04441839
+91      1 18.1818182 81.30126 0.4706987 50.43646 7.805685 0.04428241
+92      1 18.3838384 81.43824 0.4694863 50.55327 7.799356 0.04414547
+93      1 18.5858586 81.57396 0.4682968 50.67034 7.790350 0.04401595
+94      1 18.7878788 81.70383 0.4672354 50.78509 7.783490 0.04398906
+95      1 18.9898990 81.82852 0.4662965 50.89760 7.782826 0.04408307
+96      1 19.1919192 81.95115 0.4654038 51.00996 7.784856 0.04417067
+97      1 19.3939394 82.07489 0.4644874 51.12285 7.786861 0.04425888
+98      1 19.5959596 82.19974 0.4635465 51.23619 7.788843 0.04434770
+99      1 19.7979798 82.32569 0.4625806 51.35029 7.790801 0.04443712
+100     1 20.0000000 82.45273 0.4615893 51.46561 7.792737 0.04452715
+       MAESD
+1   2.817337
+2   2.829455
+3   2.803650
+4   2.841285
+5   2.792639
+6   2.851081
+7   2.783126
+8   2.781179
+9   2.863820
+10  2.777416
+11  2.878929
+12  2.769430
+13  2.761515
+14  2.894761
+15  2.756047
+16  2.910815
+17  2.754411
+18  2.926819
+19  2.757156
+20  2.937354
+21  2.761997
+22  2.951496
+23  2.964065
+24  2.759377
+25  2.974521
+26  2.746367
+27  2.984976
+28  2.725080
+29  2.994393
+30  2.709932
+31  3.003875
+32  3.011765
+33  2.684167
+34  3.017562
+35  2.658165
+36  3.017188
+37  3.018332
+38  3.019112
+39  3.019113
+40  3.019580
+41  3.021214
+42  3.022870
+43  3.025434
+44  3.027017
+45  3.028299
+46  3.028482
+47  3.025751
+48  3.022586
+49  3.019412
+50  3.016220
+51  3.013062
+52  3.009070
+53  3.004369
+54  3.000786
+55  2.998101
+56  2.996394
+57  2.995193
+58  2.994715
+59  2.993872
+60  2.991991
+61  2.984518
+62  2.975762
+63  2.966456
+64  2.957024
+65  2.948102
+66  2.943455
+67  2.939194
+68  2.935164
+69  2.931814
+70  2.928500
+71  2.925876
+72  2.924529
+73  2.923760
+74  2.922885
+75  2.921996
+76  2.921967
+77  2.922224
+78  2.922291
+79  2.920565
+80  2.918231
+81  2.915060
+82  2.910641
+83  2.905894
+84  2.901270
+85  2.896430
+86  2.891538
+87  2.886513
+88  2.881587
+89  2.877580
+90  2.872024
+91  2.867067
+92  2.861995
+93  2.856984
+94  2.853221
+95  2.852627
+96  2.852437
+97  2.852725
+98  2.852629
+99  2.852316
+100 2.852285</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>lasso_mod2</span><span class='op'>$</span><span class='va'>results</span><span class='op'>%&gt;%</span><span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/arrange.html'>arrange</a></span><span class='op'>(</span><span class='va'>MAE</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>    alpha     lambda     RMSE  Rsquared      MAE   RMSESD RsquaredSD
+1       1  1.6161616 71.86018 0.5476047 44.82754 8.611943 0.04994647
+2       1  1.8181818 72.02738 0.5458645 44.83009 8.653169 0.05040325
+3       1  1.4141414 71.70271 0.5492515 44.83965 8.580281 0.04960765
+4       1  2.0202020 72.20572 0.5439996 44.85295 8.704909 0.05100512
+5       1  1.2121212 71.55988 0.5507590 44.86697 8.555352 0.04937961
+6       1  2.2222222 72.40235 0.5419060 44.89822 8.757516 0.05162385
+7       1  1.0101010 71.42315 0.5522331 44.90606 8.521772 0.04907568
+8       1  2.4242424 72.61891 0.5395507 44.96064 8.811725 0.05225559
+9       1  0.8080808 71.30322 0.5535382 44.96080 8.482370 0.04876696
+10      1  0.6060606 71.20745 0.5545970 45.01424 8.441990 0.04855212
+11      1  2.6262626 72.85582 0.5369109 45.03817 8.868976 0.05292347
+12      1  0.2020202 70.90976 0.5582374 45.04134 8.227487 0.04645882
+13      1  0.4040404 71.08761 0.5560194 45.05230 8.385630 0.04823597
+14      1  2.8282828 73.10842 0.5340421 45.12923 8.928392 0.05363531
+15      1  0.0000000 70.89178 0.5585983 45.14335 8.104515 0.04500008
+16      1  3.0303030 73.37341 0.5309828 45.24047 8.987370 0.05435597
+17      1  3.2323232 73.63659 0.5279229 45.35571 9.020015 0.05472766
+18      1  3.4343434 73.90480 0.5247681 45.47746 9.032533 0.05482070
+19      1  3.6363636 74.17845 0.5215069 45.60801 9.032044 0.05474592
+20      1  3.8383838 74.39300 0.5190739 45.70618 9.017262 0.05455414
+21      1  4.0404040 74.60125 0.5167250 45.80875 9.003708 0.05441236
+22      1  4.2424242 74.78454 0.5147323 45.90703 9.006489 0.05448453
+23      1  4.4444444 74.96984 0.5127092 46.01560 9.007622 0.05455244
+24      1  4.6464646 75.14632 0.5108149 46.11848 9.000832 0.05449788
+25      1  4.8484848 75.32562 0.5088744 46.22417 8.992888 0.05444058
+26      1  5.0505051 75.48863 0.5071758 46.31554 8.980546 0.05431266
+27      1  5.2525253 75.65751 0.5053864 46.41506 8.967624 0.05418192
+28      1  5.4545455 75.80791 0.5038723 46.49826 8.955715 0.05409107
+29      1  5.6565657 75.95819 0.5023622 46.58375 8.944424 0.05399993
+30      1  5.8585859 76.11057 0.5008229 46.67215 8.932562 0.05391594
+31      1  6.0606061 76.25728 0.4993704 46.75577 8.920123 0.05380344
+32      1  6.2626263 76.40875 0.4978444 46.84792 8.907386 0.05369136
+33      1  6.4646465 76.55365 0.4964202 46.93012 8.895783 0.05361949
+34      1  6.6666667 76.68809 0.4951659 47.00381 8.894198 0.05366916
+35      1  6.8686869 76.82653 0.4938514 47.08136 8.892519 0.05372400
+36      1  7.0707071 76.96033 0.4926180 47.15420 8.891694 0.05381595
+37      1  7.2727273 77.08197 0.4915875 47.21852 8.884488 0.05381574
+38      1  7.4747475 77.20704 0.4905082 47.28565 8.877047 0.05381368
+39      1  7.6767677 77.33316 0.4894160 47.35665 8.869233 0.05381479
+40      1  7.8787879 77.44956 0.4884847 47.42238 8.859732 0.05375472
+41      1  8.0808081 77.56715 0.4875400 47.49014 8.850033 0.05367731
+42      1  8.2828283 77.68771 0.4865531 47.56020 8.840180 0.05359565
+43      1  8.4848485 77.80593 0.4856209 47.62807 8.830081 0.05354926
+44      1  8.6868687 77.91861 0.4847946 47.69290 8.824172 0.05357228
+45      1  8.8888889 78.03359 0.4839395 47.75922 8.818452 0.05360106
+46      1  9.0909091 78.15104 0.4830517 47.82673 8.812614 0.05363154
+47      1  9.2929293 78.27030 0.4821441 47.89528 8.806739 0.05367492
+48      1  9.4949495 78.38926 0.4812509 47.96464 8.800446 0.05370411
+49      1  9.6969697 78.51056 0.4803251 48.03854 8.793952 0.05373327
+50      1  9.8989899 78.63427 0.4793644 48.11606 8.787335 0.05376415
+51      1 10.1010101 78.75938 0.4783827 48.19526 8.780636 0.05380332
+52      1 10.3030303 78.88364 0.4774169 48.27480 8.775046 0.05385677
+53      1 10.5050505 79.00883 0.4764406 48.35575 8.770295 0.05390998
+54      1 10.7070707 79.13633 0.4754280 48.43906 8.765445 0.05396403
+55      1 10.9090909 79.26613 0.4743781 48.52460 8.760496 0.05401886
+56      1 11.1111111 79.39737 0.4733062 48.61224 8.755386 0.05407741
+57      1 11.3131313 79.52632 0.4722822 48.69903 8.749890 0.05411927
+58      1 11.5151515 79.65605 0.4712459 48.78702 8.744385 0.05414892
+59      1 11.7171717 79.78799 0.4701714 48.87827 8.738796 0.05417818
+60      1 11.9191919 79.92212 0.4690578 48.97404 8.733127 0.05420698
+61      1 12.1212121 80.05830 0.4679069 49.07182 8.727387 0.05423664
+62      1 12.3232323 80.19515 0.4667440 49.17067 8.721359 0.05427044
+63      1 12.5252525 80.32826 0.4656470 49.26566 8.716258 0.05427916
+64      1 12.7272727 80.46332 0.4645132 49.36193 8.711223 0.05428783
+65      1 12.9292929 80.60038 0.4633407 49.45921 8.706140 0.05429468
+66      1 13.1313131 80.73942 0.4621285 49.55817 8.701012 0.05429962
+67      1 13.3333333 80.87972 0.4608902 49.65727 8.696070 0.05431516
+68      1 13.5353535 81.00361 0.4599782 49.74569 8.693651 0.05445259
+69      1 13.7373737 81.11571 0.4593002 49.82810 8.691433 0.05448643
+70      1 13.9393939 81.22937 0.4585994 49.91406 8.689244 0.05452137
+71      1 14.1414141 81.34458 0.4578751 50.00278 8.687085 0.05455744
+72      1 14.3434343 81.46132 0.4571268 50.09234 8.684957 0.05459464
+73      1 14.5454545 81.57951 0.4563554 50.18241 8.682866 0.05463390
+74      1 14.7474747 81.69490 0.4556463 50.26992 8.679341 0.05469308
+75      1 14.9494949 81.80525 0.4550351 50.35416 8.672244 0.05470267
+76      1 15.1515152 81.91440 0.4544496 50.43809 8.664624 0.05469093
+77      1 15.3535354 82.02496 0.4538430 50.52324 8.656958 0.05467826
+78      1 15.5555556 82.13692 0.4532146 50.60910 8.649248 0.05466460
+79      1 15.7575758 82.25028 0.4525639 50.69631 8.641494 0.05464987
+80      1 15.9595960 82.36502 0.4518902 50.78698 8.633698 0.05463401
+81      1 16.1616162 82.48130 0.4511906 50.88015 8.625667 0.05461250
+82      1 16.3636364 82.59812 0.4504830 50.97434 8.616604 0.05456434
+83      1 16.5656566 82.71466 0.4497844 51.06855 8.606062 0.05447422
+84      1 16.7676768 82.83253 0.4490622 51.16379 8.595467 0.05438119
+85      1 16.9696970 82.95172 0.4483157 51.25953 8.584819 0.05428516
+86      1 17.1717172 83.07223 0.4475442 51.35634 8.574121 0.05418606
+87      1 17.3737374 83.19404 0.4467471 51.45420 8.563375 0.05408380
+88      1 17.5757576 83.31710 0.4459250 51.55317 8.552583 0.05397899
+89      1 17.7777778 83.43935 0.4451280 51.65235 8.541862 0.05387987
+90      1 17.9797980 83.56027 0.4443685 51.75208 8.532992 0.05379595
+91      1 18.1818182 83.68159 0.4436061 51.85272 8.525362 0.05372761
+92      1 18.3838384 83.80411 0.4428203 51.95553 8.517700 0.05365608
+93      1 18.5858586 83.92780 0.4420104 52.05967 8.510007 0.05358126
+94      1 18.7878788 84.05267 0.4411758 52.16444 8.502285 0.05350306
+95      1 18.9898990 84.17872 0.4403158 52.26962 8.494535 0.05342140
+96      1 19.1919192 84.30593 0.4394298 52.37541 8.486759 0.05333618
+97      1 19.3939394 84.43073 0.4386203 52.48150 8.479740 0.05331683
+98      1 19.5959596 84.55074 0.4379347 52.58611 8.473960 0.05336899
+99      1 19.7979798 84.66863 0.4373219 52.69114 8.470462 0.05342392
+100     1 20.0000000 84.78728 0.4366999 52.79707 8.467438 0.05349043
+       MAESD
+1   3.118278
+2   3.149239
+3   3.089170
+4   3.181519
+5   3.069367
+6   3.210433
+7   3.044411
+8   3.239421
+9   3.017470
+10  2.984239
+11  3.263865
+12  2.766543
+13  2.910660
+14  3.290835
+15  2.638272
+16  3.330949
+17  3.358280
+18  3.384133
+19  3.412153
+20  3.431891
+21  3.455449
+22  3.473411
+23  3.485980
+24  3.489088
+25  3.491819
+26  3.490810
+27  3.490391
+28  3.494180
+29  3.498773
+30  3.502385
+31  3.504326
+32  3.510259
+33  3.514459
+34  3.530047
+35  3.546229
+36  3.561756
+37  3.570167
+38  3.579034
+39  3.588695
+40  3.591798
+41  3.594515
+42  3.595524
+43  3.595102
+44  3.593066
+45  3.591360
+46  3.590409
+47  3.590244
+48  3.590861
+49  3.589320
+50  3.587180
+51  3.583743
+52  3.579395
+53  3.573617
+54  3.566204
+55  3.558932
+56  3.550646
+57  3.541655
+58  3.532503
+59  3.522306
+60  3.512416
+61  3.501215
+62  3.488505
+63  3.477571
+64  3.467627
+65  3.458450
+66  3.450108
+67  3.442224
+68  3.435209
+69  3.427597
+70  3.420711
+71  3.413923
+72  3.406524
+73  3.399498
+74  3.393003
+75  3.386534
+76  3.379548
+77  3.372506
+78  3.365429
+79  3.359350
+80  3.354713
+81  3.351280
+82  3.348002
+83  3.343568
+84  3.339390
+85  3.334781
+86  3.330076
+87  3.324852
+88  3.319030
+89  3.313057
+90  3.308085
+91  3.303381
+92  3.297974
+93  3.292594
+94  3.287610
+95  3.282302
+96  3.277131
+97  3.272937
+98  3.269933
+99  3.269471
+100 3.269440</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>airbnb_select2</span> <span class='op'>&lt;-</span> <span class='va'>airbnb</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/select.html'>select</a></span><span class='op'>(</span><span class='va'>price</span>,<span class='va'>property_type</span>,<span class='va'>room_type</span>,<span class='va'>accommodates</span>,<span class='va'>beds</span>,<span class='va'>guests_included</span>,<span class='va'>minimum_nights</span>,<span class='va'>availability_30</span>,<span class='va'>bathrooms</span>,<span class='va'>bedrooms</span>,<span class='va'>review_scores_rating</span>,<span class='va'>is_business_travel_ready</span>,<span class='va'>cancellation_policy</span>,<span class='va'>require_guest_profile_picture</span>,<span class='va'>reviews_per_month</span>,<span class='va'>neighbourhood_group</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>airbnb_select_noNA</span><span class='op'>&lt;-</span><span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/tidyr/man/drop_na.html'>drop_na</a></span><span class='op'>(</span><span class='va'>airbnb_select2</span><span class='op'>)</span>
+<span class='va'>back_step_mod_out</span> <span class='op'>&lt;-</span> <span class='va'>airbnb_select_noNA</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/mutate.html'>mutate</a></span><span class='op'>(</span>
+        fitted <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>back_step_mod2</span>, newdata <span class='op'>=</span> <span class='va'>airbnb_select_noNA</span><span class='op'>)</span>,
+        resid <span class='op'>=</span> <span class='va'>price</span> <span class='op'>-</span> <span class='va'>fitted</span>
+    <span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>back_step_mod_out</span>, <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>beds</span>, y <span class='op'>=</span> <span class='va'>resid</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_abline.html'>geom_hline</a></span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fl'>0</span>, color <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggtheme.html'>theme_classic</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Fitted values"</span>, y <span class='op'>=</span> <span class='st'>"Residuals"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="machine-learning_files/figure-html5/unnamed-chunk-34-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>back_step_mod_out</span>, <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>bathrooms</span>, y <span class='op'>=</span> <span class='va'>resid</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_abline.html'>geom_hline</a></span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fl'>0</span>, color <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggtheme.html'>theme_classic</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Fitted values"</span>, y <span class='op'>=</span> <span class='st'>"Residuals"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="machine-learning_files/figure-html5/unnamed-chunk-35-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>back_step_mod_out</span>, <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>review_scores_rating</span>, y <span class='op'>=</span> <span class='va'>resid</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_abline.html'>geom_hline</a></span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fl'>0</span>, color <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggtheme.html'>theme_classic</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Fitted values"</span>, y <span class='op'>=</span> <span class='st'>"Residuals"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="machine-learning_files/figure-html5/unnamed-chunk-36-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>back_step_mod_out</span>, <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>reviews_per_month</span>, y <span class='op'>=</span> <span class='va'>resid</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_abline.html'>geom_hline</a></span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fl'>0</span>, color <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggtheme.html'>theme_classic</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Fitted values"</span>, y <span class='op'>=</span> <span class='st'>"Residuals"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="machine-learning_files/figure-html5/unnamed-chunk-37-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>back_step_mod_out</span>, <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>accommodates</span>, y <span class='op'>=</span> <span class='va'>resid</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_abline.html'>geom_hline</a></span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fl'>0</span>, color <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggtheme.html'>theme_classic</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Fitted values"</span>, y <span class='op'>=</span> <span class='st'>"Residuals"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="machine-learning_files/figure-html5/unnamed-chunk-38-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>lasso_model_out</span> <span class='op'>&lt;-</span> <span class='va'>airbnb_select_noNA</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/mutate.html'>mutate</a></span><span class='op'>(</span>
+        fitted <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>lasso_mod2</span>, newdata <span class='op'>=</span> <span class='va'>airbnb_select_noNA</span><span class='op'>)</span>,
+        resid <span class='op'>=</span> <span class='va'>price</span> <span class='op'>-</span> <span class='va'>fitted</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>lasso_model_out</span>, <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>beds</span>, y <span class='op'>=</span> <span class='va'>resid</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_abline.html'>geom_hline</a></span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fl'>0</span>, color <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggtheme.html'>theme_classic</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Fitted values"</span>, y <span class='op'>=</span> <span class='st'>"Residuals"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="machine-learning_files/figure-html5/unnamed-chunk-40-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>lasso_model_out</span>, <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>bathrooms</span>, y <span class='op'>=</span> <span class='va'>resid</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_abline.html'>geom_hline</a></span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fl'>0</span>, color <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggtheme.html'>theme_classic</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Fitted values"</span>, y <span class='op'>=</span> <span class='st'>"Residuals"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="machine-learning_files/figure-html5/unnamed-chunk-41-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>lasso_model_out</span>, <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>review_scores_rating</span>, y <span class='op'>=</span> <span class='va'>resid</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_abline.html'>geom_hline</a></span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fl'>0</span>, color <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggtheme.html'>theme_classic</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Fitted values"</span>, y <span class='op'>=</span> <span class='st'>"Residuals"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="machine-learning_files/figure-html5/unnamed-chunk-42-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>lasso_model_out</span>, <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>reviews_per_month</span>, y <span class='op'>=</span> <span class='va'>resid</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_abline.html'>geom_hline</a></span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fl'>0</span>, color <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggtheme.html'>theme_classic</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Fitted values"</span>, y <span class='op'>=</span> <span class='st'>"Residuals"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="machine-learning_files/figure-html5/unnamed-chunk-43-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>lasso_model_out</span>, <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>accommodates</span>, y <span class='op'>=</span> <span class='va'>resid</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_abline.html'>geom_hline</a></span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fl'>0</span>, color <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggtheme.html'>theme_classic</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Fitted values"</span>, y <span class='op'>=</span> <span class='st'>"Residuals"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="machine-learning_files/figure-html5/unnamed-chunk-44-1.png" width="624" /></p>
+</div>
+<h3 id="decide-an-overall-most-preferable-model.">Decide an overall most preferable model.</h3>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/coef.html'>coef</a></span><span class='op'>(</span><span class='va'>back_step_mod1</span><span class='op'>$</span><span class='va'>finalModel</span>, id <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>                 (Intercept)        room_typePrivate room 
+                    20.91607                    -64.27126 
+        room_typeShared room                 accommodates 
+                   -95.71123                     22.16623 
+                   bathrooms neighbourhood_groupManhattan 
+                    50.96664                     57.09183 </code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/coef.html'>coef</a></span><span class='op'>(</span><span class='va'>lasso_mod1</span><span class='op'>$</span><span class='va'>finalModel</span>, <span class='fl'>14</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>37 x 1 sparse Matrix of class &quot;dgCMatrix&quot;
+                                            1
+(Intercept)                         66.898679
+property_typeBed &amp; Breakfast         .       
+property_typeBoutique hotel          .       
+property_typeBungalow                .       
+property_typeCastle                  .       
+property_typeCondominium             .       
+property_typeDorm                    .       
+property_typeGuesthouse              .       
+property_typeHostel                  .       
+property_typeHouse                   .       
+property_typeIn-law                  .       
+property_typeLoft                    .       
+property_typeOther                   .       
+property_typeTimeshare               .       
+property_typeTownhouse               .       
+property_typeVacation home           .       
+property_typeVilla                   .       
+room_typePrivate room              -40.079016
+room_typeShared room                 .       
+accommodates                        18.777177
+beds                                 .       
+guests_included                      .       
+minimum_nights                       .       
+availability_30                      .       
+bathrooms                           10.222817
+bedrooms                             7.232544
+review_scores_rating                 .       
+is_business_travel_readyTRUE         .       
+cancellation_policymoderate          .       
+cancellation_policystrict            .       
+cancellation_policysuper_strict_30   .       
+require_guest_profile_pictureTRUE    .       
+reviews_per_month                    .       
+neighbourhood_groupBrooklyn          .       
+neighbourhood_groupManhattan        30.566556
+neighbourhood_groupQueens            .       
+neighbourhood_groupStaten Island     .       </code></pre>
+</div>
+<h2 id="classification-analysis---methods">Classification analysis - Methods</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>abnb</span><span class='op'>&lt;-</span><span class='va'>airbnb_select</span><span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>neighbourhood_group</span><span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Brooklyn"</span>,<span class='st'>"Manhattan"</span>,<span class='st'>"Queens"</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h3 id="random-forest-model">Random forest model</h3>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>253</span><span class='op'>)</span>
+<span class='va'>rf_mod</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/train.html'>train</a></span><span class='op'>(</span>
+      <span class='va'>neighbourhood_group</span> <span class='op'>~</span> 
+      <span class='va'>property_type</span><span class='op'>+</span>
+      <span class='va'>price</span><span class='op'>+</span>
+      <span class='va'>room_type</span><span class='op'>+</span>
+      <span class='va'>accommodates</span><span class='op'>+</span>
+      <span class='va'>beds</span><span class='op'>+</span>
+      <span class='va'>guests_included</span><span class='op'>+</span>
+      <span class='va'>minimum_nights</span><span class='op'>+</span>
+      <span class='va'>availability_30</span><span class='op'>+</span>
+      <span class='va'>bathrooms</span><span class='op'>+</span>
+      <span class='va'>bedrooms</span><span class='op'>+</span>
+      <span class='va'>review_scores_rating</span><span class='op'>+</span>
+      <span class='va'>is_business_travel_ready</span><span class='op'>+</span>
+      <span class='va'>require_guest_profile_picture</span><span class='op'>+</span>
+      <span class='va'>reviews_per_month</span>,
+    data <span class='op'>=</span> <span class='va'>abnb</span>,
+    method <span class='op'>=</span> <span class='st'>"rf"</span>,
+    tuneGrid <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>mtry <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>3</span>,<span class='fl'>7</span>,<span class='fl'>15</span><span class='op'>)</span><span class='op'>)</span>,
+    trControl <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/trainControl.html'>trainControl</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"oob"</span>, selectionFunction <span class='op'>=</span> <span class='st'>"best"</span><span class='op'>)</span>,
+    metric <span class='op'>=</span> <span class='st'>"Accuracy"</span>,
+    ntree <span class='op'>=</span> <span class='fl'>1000</span>, 
+    na.action <span class='op'>=</span> <span class='va'>na.omit</span>
+<span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h3 id="decision-trees-model">Decision trees model</h3>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>tree_mod</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/train.html'>train</a></span><span class='op'>(</span>
+    <span class='va'>neighbourhood_group</span> <span class='op'>~</span> 
+      <span class='va'>property_type</span><span class='op'>+</span>
+      <span class='va'>price</span><span class='op'>+</span>
+      <span class='va'>room_type</span><span class='op'>+</span>
+      <span class='va'>accommodates</span><span class='op'>+</span>
+      <span class='va'>beds</span><span class='op'>+</span>
+      <span class='va'>guests_included</span><span class='op'>+</span>
+      <span class='va'>minimum_nights</span><span class='op'>+</span>
+      <span class='va'>availability_30</span><span class='op'>+</span>
+      <span class='va'>bathrooms</span><span class='op'>+</span>
+      <span class='va'>bedrooms</span><span class='op'>+</span>
+      <span class='va'>review_scores_rating</span><span class='op'>+</span>
+      <span class='va'>is_business_travel_ready</span><span class='op'>+</span>
+      <span class='va'>require_guest_profile_picture</span><span class='op'>+</span>
+      <span class='va'>reviews_per_month</span>,
+    data <span class='op'>=</span> <span class='va'>abnb</span>,
+    method <span class='op'>=</span> <span class='st'>"rpart"</span>,
+    tuneGrid <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>cp <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>0.0042</span>, length.out <span class='op'>=</span> <span class='fl'>50</span><span class='op'>)</span><span class='op'>)</span>,
+    trControl <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/trainControl.html'>trainControl</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"cv"</span>, number <span class='op'>=</span> <span class='fl'>10</span>, selectionFunction <span class='op'>=</span> <span class='st'>"oneSE"</span><span class='op'>)</span>,
+    metric <span class='op'>=</span> <span class='st'>"Accuracy"</span>,
+    na.action <span class='op'>=</span> <span class='va'>na.omit</span>
+<span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h2 id="classification-analysis---results---variable-importance">Classification analysis - Results - Variable Importance</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>var_imp_rf</span> <span class='op'>&lt;-</span> <span class='fu'>randomForest</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/randomForest/man/importance.html'>importance</a></span><span class='op'>(</span><span class='va'>rf_mod</span><span class='op'>$</span><span class='va'>finalModel</span><span class='op'>)</span>
+
+<span class='va'>var_imp_rf</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
+        predictor <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>rownames</a></span><span class='op'>(</span><span class='va'>var_imp_rf</span><span class='op'>)</span>,
+        MeanDecreaseGini <span class='op'>=</span> <span class='va'>var_imp_rf</span><span class='op'>[</span>,<span class='st'>"MeanDecreaseGini"</span><span class='op'>]</span>
+    <span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/arrange.html'>arrange</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/desc.html'>desc</a></span><span class='op'>(</span><span class='va'>MeanDecreaseGini</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='co'># Top 20</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>var_imp_rf</span>, <span class='fl'>20</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>                                                          predictor
+price                                                         price
+reviews_per_month                                 reviews_per_month
+review_scores_rating                           review_scores_rating
+availability_30                                     availability_30
+minimum_nights                                       minimum_nights
+accommodates                                           accommodates
+property_typeHouse                               property_typeHouse
+guests_included                                     guests_included
+bedrooms                                                   bedrooms
+beds                                                           beds
+bathrooms                                                 bathrooms
+room_typePrivate_room                         room_typePrivate_room
+is_business_travel_readyTRUE           is_business_travel_readyTRUE
+require_guest_profile_pictureTRUE require_guest_profile_pictureTRUE
+property_typeTownhouse                       property_typeTownhouse
+property_typeLoft                                 property_typeLoft
+room_typeShared_room                           room_typeShared_room
+property_typeCondominium                   property_typeCondominium
+property_typeOther                               property_typeOther
+property_typeVilla                               property_typeVilla
+                                  MeanDecreaseGini
+price                                   463.153367
+reviews_per_month                       286.268728
+review_scores_rating                    179.281418
+availability_30                         171.631001
+minimum_nights                          135.749593
+accommodates                            101.331816
+property_typeHouse                       78.155629
+guests_included                          63.775040
+bedrooms                                 62.381345
+beds                                     58.478027
+bathrooms                                43.476794
+room_typePrivate_room                    33.925941
+is_business_travel_readyTRUE             17.806038
+require_guest_profile_pictureTRUE        15.682114
+property_typeTownhouse                   11.732759
+property_typeLoft                        11.193339
+room_typeShared_room                      9.347657
+property_typeCondominium                  5.114387
+property_typeOther                        5.112317
+property_typeVilla                        2.853551</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>rf_mod</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="machine-learning_files/figure-html5/unnamed-chunk-51-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>rf_mod</span><span class='op'>$</span><span class='va'>finalModel</span>
+</code></pre>
+</div>
+<pre><code>
+Call:
+ randomForest(x = x, y = y, ntree = 1000, mtry = param$mtry) 
+               Type of random forest: classification
+                     Number of trees: 1000
+No. of variables tried at each split: 7
+
+        OOB estimate of  error rate: 34.36%
+Confusion matrix:
+          Brooklyn Manhattan Queens class.error
+Brooklyn      1058       503     29   0.3345912
+Manhattan      430      1324      5   0.2472996
+Queens         247        69     69   0.8207792</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>rf_mod</span><span class='op'>$</span><span class='va'>results</span>
+</code></pre>
+</div>
+<pre><code>   Accuracy      Kappa mtry
+1 0.4898232 0.03782439    1
+2 0.6317622 0.32882155    3
+3 0.6542582 0.38261926    7
+4 0.6344403 0.35181122   15</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>tree_mod</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="machine-learning_files/figure-html5/unnamed-chunk-54-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>abnb</span>, <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>neighbourhood_group</span>, y <span class='op'>=</span> <span class='va'>price</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_violin.html'>geom_violin</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="machine-learning_files/figure-html5/unnamed-chunk-55-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>abnb</span>, <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>neighbourhood_group</span>, y <span class='op'>=</span> <span class='va'>reviews_per_month</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_violin.html'>geom_violin</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="machine-learning_files/figure-html5/unnamed-chunk-55-2.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>abnb</span>, <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>neighbourhood_group</span>, y <span class='op'>=</span> <span class='va'>accommodates</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_violin.html'>geom_violin</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="machine-learning_files/figure-html5/unnamed-chunk-55-3.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>abnb</span>, <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>neighbourhood_group</span>, y <span class='op'>=</span> <span class='va'>availability_30</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_violin.html'>geom_violin</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="machine-learning_files/figure-html5/unnamed-chunk-55-4.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>abnb</span>, <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>neighbourhood_group</span>, y <span class='op'>=</span> <span class='va'>review_scores_rating</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_violin.html'>geom_violin</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="machine-learning_files/figure-html5/unnamed-chunk-55-5.png" width="624" /></p>
+</div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>

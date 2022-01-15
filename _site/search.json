@@ -6,14 +6,14 @@
       "description": "Some additional details about the website",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2022-01-14T18:32:01-06:00"
+      "last_modified": "2022-01-14T20:25:08-06:00"
     },
     {
       "path": "blog.html",
       "title": "Blog",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2022-01-14T18:32:03-06:00"
+      "last_modified": "2022-01-14T20:25:09-06:00"
     },
     {
       "path": "index.html",
@@ -21,14 +21,14 @@
       "description": "Welcome to the website. I hope you enjoy it!\n",
       "author": [],
       "contents": "\n\n          \n      \n      Jiashu Liu\n      \n      \n      About\n      Blog\n      \n      \n      \n      \n      \n      \n      ☰\n      \n      \n      \n        \n          \n            \n              \n            \n              Jiashu Liu\n            \n            \n              \n                \n                    \n                      \n                        LinkedIn\n                      \n                    \n                  \n                                    \n                    \n                      \n                        GitHub\n                      \n                    \n                  \n                                    \n                    \n                      \n                        Email\n                      \n                    \n                  \n                                  \n            \n          \n        \n        \n        \n          \n            \n            About me\n            Welcome to my personal website! I’m a senior student of Economics and Applied Math & Statistics at Macalester College, and will graduate in May 2022. I enjoy programming with R for data analytics, data visualization, and creating Shiny apps.\n            \n            \n            Education\n            Macalester College | St Paul, MN\n            BA in Economics and Applied Math & Statistics, Sept. 2018 ~ Present\n            \n            \n            Internship\n            China Securities| Summer M&A Intern, July 2021 ~ August 2021\n            Huatai Securities | Mutual Fund Intern, May 2021 ~ June 2021\n            Prepare+Prosper | Virtual Financial Advocate, January 2021 ~ May 2021\n            Macalester College | Student Fundraiser, January 2020 ~ June 2020\n            \n          \n        \n      \n    \n\n    \n      \n        \n          \n            \n              \n            \n              Jiashu Liu\n            \n            \n              \n                \n                                    \n                    \n                      LinkedIn\n                    \n                  \n                                    \n                    \n                      GitHub\n                    \n                  \n                                    \n                    \n                      Email\n                    \n                  \n                                  \n              \n            \n            \n              \n              About me\n              Welcome to my personal website! I’m a senior student of Economics and Applied Math & Statistics at Macalester College, and will graduate in May 2022. I enjoy programming with R for data analytics, data visualization, and creating Shiny apps.\n              \n              \n              Education\n              Macalester College | St Paul, MN\n              BA in Economics and Applied Math & Statistics, Sept. 2018 ~ Present\n              \n              \n              Internship\n              China Securities| Summer M&A Intern, July 2021 ~ August 2021\n              Huatai Securities | Mutual Fund Intern, May 2021 ~ June 2021\n              Prepare+Prosper | Virtual Financial Advocate, January 2021 ~ May 2021\n              Macalester College | Student Fundraiser, January 2020 ~ June 2020\n              \n            \n        \n      \n    \n\n    \n    \n    ",
-      "last_modified": "2022-01-14T18:32:03-06:00"
+      "last_modified": "2022-01-14T20:25:10-06:00"
     },
     {
       "path": "projects.html",
       "title": "Projects",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2022-01-14T18:32:05-06:00"
+      "last_modified": "2022-01-14T20:25:11-06:00"
     }
   ],
   "collections": ["posts/posts.json"]

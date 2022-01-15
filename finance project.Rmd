@@ -1,0 +1,55 @@
+---
+title: "Finance project"
+author: "Jiashu Liu"
+date: "1/14/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+*1.Whether alpha = 0 in all the sub-periods?*
+
+For both Dow and IBM, estimated alpha is very close to zero in all sub-periods. Even though all the p-values for alpha did not pass the 0.05 threshold, upon observing the confidence interval, we can see that all the 95% upper and lower bounds are close to 0 as well. Below is a summary table and a graph for estimated alpha, its p-value, and the confidence interval for all 4 periods using IBM as the individual stock. We can see that by our prediction, in all sub-periods for IBM, we are 95% confident that the true alpha won’t be off by more than 0.02 from 0. 
+
+![](figure1.PNG)
+
+![](figure2.PNG)
+
+Table2 below is the same summary table and visualization for using the Dow Index as the individual stock. In this case, the upper limits are even closer to zero. As the model predicts, in all sub-periods, we are 95% confident that the true alpha won’t be off by more than 0.006 from 0. Therefore, we would conclude that the alpha is 0. 
+
+![](figure3.PNG)
+
+![](figure4.PNG)
+
+*2.Whether beta of IBM and Dow is stable through different 5-year sub-periods?*
+
+The estimated beta values, for both Dow Index and the IBM in all sub-periods, are statistically significant with a 0.05 threshold. However, over the periods, the beta for IBM seems to be less stable than that of the Dow Index. Graph below shows the beta over 4 periods for both IBM and the portfolio. As we can see, the beta for Dow Index remains at 0.9 for all the time but the beta for IBM fluctuated. 
+
+![](figure5.PNG)
+
+*3.What do the results imply to us about the efficiency of the CAPM model for individual stock (IBM) and portfolio (Dow) respectively?*
+
+Given the fact that the alpha over 4 periods for Dow Index is closer to zero and the beta value for Dow Index is consistent over time, we would conclude that the CAPM model for Dow Index (portfolio) is more efficient. However, for the individual stock, IBM in this case, the CAPM model is less efficient since the beta will change over time. One reason for that might be individual stocks will be affected by some random factors in different years but the portfolio as a whole will balance the randomness of each stock and could reflect the market trend better, especially when the Dow index contains the most leading stocks in each industry. This could also implicitly explain why a portfolio is less risky than individual stocks since the portfolio contains a diverse pool and always follows the market, which makes it more predictable. 
+
+*4.Whether gamma_0=0?*
+
+Table 3 is the regression result from doing the test on cross-sectional data. As we can see, the expected gamma0 is 0.00537, which is very close to 0. A p-value smaller than 0.05 also suggests that our estimate is significant. 
+
+![](figure6.PNG)
+
+*5.Whether gamma_1 = market premium?*
+
+The market premium, which is calculated by S&P 500 return rate-risk free rate, is 0.00712656. And gamma_1 that we calculated is 0.00639627. The estimated gamma_1 is only off the true market premium by 11.417393%. Thus we have enough evidence to say gamma_1 is equal to market premium.
+
+*6.What do your results imply about the efficiency of the CAPM?*
+
+Since our analysis proved that gamma0 is about 0 and gamma1 is very close to the market risk premium, we would conclude that the CAPM model is efficient at least in 2015-2020. 
+
+Note: 
+Since DOW Inc. only has data after March 2019, we decided not to include it in part 2.
+All the calculations are derived from excel and the corresponding google sheets link is [here](https://docs.google.com/spreadsheets/d/1lGjHjcjj8LS35oBgkOEV3i6BRhjEM8NGwArhI-xfz6g/edit#gid=1376656908). 
+
+
+
