@@ -1,7 +1,7 @@
 ---
-title: "Tidytuesday2"
+title: "Tidy Tuesday #2"
 description: |
-  A short description of the post.
+  Tidy tuesday homework #2
 author:
   - name: Jiashu Liu
 date: 09-21-2021
